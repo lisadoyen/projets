@@ -1,29 +1,26 @@
-# Mediatheque
-
-projet tut S3/S4
-
-lien google drive : questions/réponses avec client (modification lien):
-
-https://drive.google.com/drive/folders/1JL4eJVPuv8dHCAw8VdNH74qs19-GNOXR?usp=sharing
+# Site Internet : Mediatheque
 
 
-# arborescence de git :
+# arborescence :
 
-**projet** : tous les dossier et fichiers symfony
+**code source** : tous les dossiers et fichiers du code source du projet
 
-**docs** : 
- - maquette 
- - suivi
-   - evolution
-   - client
- - rapport
+**document** : 
+ - maquette
+   - Pages
+   - ERD
+   - Logigrammes
+   - IHM ancienne application
+ - evolution
+ - diaporamas
+ - rapports
  
  
-# récapitulatif (diapo)
+# récapitulatif
 
 - 3 types d'utilisateurs :
 
-    -  les **administrateurs** : Utilisateurs ayant les droits les plus élevés, accès à toutes les fonctionnalités du logiciel, 5       personnes, membres du bureau de la commission médiathèque.
+    -  les **administrateurs** : Utilisateurs ayant les droits les plus élevés, accès à toutes les fonctionnalités du logiciel, 5 personnes, membres du bureau de la commission médiathèque.
     -  les **bénévoles** : personnes faisant partie de la commission, aident sur un certain nombre d’activités, assurent les permanences, font les achats des nouveautés, les enregistrent et les mettent rayon, déclasser les articles. Par contre, ils n’ont pas accès à la gestion de la base des adhérents.
     -  les **adhérents** : salariés Thalès, possèdent un compte nominatif, possibilité limiter de modifier les bdd.
       
@@ -106,9 +103,7 @@ https://drive.google.com/drive/folders/1JL4eJVPuv8dHCAw8VdNH74qs19-GNOXR?usp=sha
            - Discuter :
              - Création, contribution à un forum
              - Chat en direct avec un autre adhérent connecté
-      
-     # AJOUT DE NOUVELLES FONCTIONNALITES
-     
+ 
      - **TELECHARGER**
         - Pour **adhérents** :
            - Visualiser la liste des articles disponibles au téléchargement :
