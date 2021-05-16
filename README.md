@@ -12,7 +12,7 @@ un projet de développement par groupe du jeu Snake en java et java Swing réali
 un projet de développement individuel du jeu Kamisado en java et java Swing.
 
 # Sites Internet
-3 projets de développement de sites web : un site de démonstration en NodeJS, un site de vente de produits en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL et un site pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client.
+un site pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client.
 
 
 ## Lien des Vidéos
