@@ -1,0 +1,48 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container">
+        <h1 class="pt-5 titre-responsive">Récapitulatifs des utilisateurs</h1><br>
+        <div class="row">
+            <a href="{{ path('users_add') }}" class="edit-btn btn-responsive-global">Ajouter un utilisateur</a>
+        </div>
+        <div>
+            <table class="table table-responsive">
+                <thead class="text-responsive">
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Statut</th>
+                    <th>Role</th>
+                    <th>Opérations</th>
+                </tr>
+                </thead>
+                <tbody class="text-responsive">
+                {% if users is not empty %}
+                    {% for utilisateur in users %}
+                        <tr>
+                            <td>{{utilisateur.username}}</td>
+                            <td>{{utilisateur.prenom}}</td>
+                            <td>{{utilisateur.nom}}</td>
+                            <td>{{utilisateur.emailPerso}}</td>
+                            <td>{{utilisateur.telPerso}}</td>
+                            <td>{{utilisateur.fonction.libelle}}</td>
+                            <td>{{utilisateur.getRoles[0]}}</td>
+                            <td>
+                                <a href="" class="edit-btn btn-responsive-global">Détails</a>
+                                <a href="" class="edit-btn btn-responsive-global">Modifier</a>
+                                <a href="" class="edit-btn btn-responsive-global">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr class="table-warning text-responsive"><td>Pas de utilisateur</td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a class="edit-btn btn-responsive-global" href="{{ path('users_accueil') }}">Retour</a>
+{% endblock %}

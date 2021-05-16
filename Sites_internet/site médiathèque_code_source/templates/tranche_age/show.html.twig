@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">TrancheAge</h1>
+
+    <table class="table table-responsive">
+        <tbody class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <td>{{ tranche_age.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ tranche_age.libelle }}</td>
+            </tr>
+            <tr>
+                <th>AgeMin</th>
+                <td>{{ tranche_age.ageMin }}</td>
+            </tr>
+            <tr>
+                <th>AgeMax</th>
+                <td>{{ tranche_age.ageMax }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tranche_age_index') }}" class="edit-btn btn-responsive-global">Liste des tranches d'âges</a>
+    <a href="{{ path('tranche_age_edit', {'id': tranche_age.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {{ include('tranche_age/_delete_form.html.twig') }}
+</div>
+{% endblock %}

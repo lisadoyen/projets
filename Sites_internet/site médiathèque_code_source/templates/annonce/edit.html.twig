@@ -1,0 +1,16 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+
+        <h1 class="titre-responsive">Modifier l'annonce</h1>
+        <div class="text-show-responsive-detail">
+            {{ include('annonce/_form.html.twig', {'button_label': 'Modifier'}) }}
+        </div>
+        <div class="row">
+            <div class="col">{{ include('annonce/_delete_form.html.twig') }}</div>
+        </div>
+
+        <a class="edit-btn btn-responsive-global" href="{{ path('annonce_index') }}">Liste des annonces</a>
+        <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+    </div>
+{% endblock %}

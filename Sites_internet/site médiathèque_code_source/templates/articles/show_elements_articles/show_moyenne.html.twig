@@ -1,0 +1,11 @@
+{% if moyenne is not defined and moyenne != null %}
+    pas de moyenne
+{% elseif moyenne is empty %}
+    pas de moyenne
+{% else %}
+    {% if moyenne[article.id] is defined %}
+        {{ moyenne[article.id] |round(1, 'floor') }}/5
+    {% else %}
+        pas de moyenne
+    {% endif %}
+{% endif %}

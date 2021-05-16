@@ -1,0 +1,36 @@
+
+/* téléphone standard */
+@media screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    /* photo dans page profil */
+    .img-profil{
+        width: 200px;
+        height: 200px;
+    }
+
+    .col-responsive-profil{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* TELEPHONE */
+/* Nokia 8110 4G */
+/* Portrait and Landscape */
+@media screen
+and (min-device-width: 240px)
+and (max-device-width: 320px) {
+    /* photo dans page profil */
+    .img-profil{
+        width: 200px;
+        height: 200px;
+    }
+
+    .col-responsive-profil{
+        -ms-flex: 0 0 83.333333%;
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+}

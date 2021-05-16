@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Opérations sur les Utilisateurs</h1><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Utilisateurs
+            </div>
+            <div class="col-sm">
+                <form action="{{ path('data_base_file', {table:'user'}) }}" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter les utilisateurs</button>
+                </form>
+            </div>
+            <div class="col-sm">
+                <a href="" class="edit-btn btn-responsive-global">Importer les utilisateurs</a>
+            </div>
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Exporter la BDD
+            </div>
+            <div class="col-sm">
+                <form action="{{ path('data_base_file', {table:'complete'}) }}" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter la BDD</button>
+                </form>
+            </div>
+        </div><hr>
+    </div>
+{% endblock %}

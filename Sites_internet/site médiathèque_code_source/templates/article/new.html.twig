@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Ajouter un article</h1>
+        <div class="text-show-responsive-detail">
+            {{ include('article/_form.html.twig', {'button_label': 'Ajouter l\'article'}) }}
+        </div>
+        <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+{% endblock %}

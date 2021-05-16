@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Créer une tranche d'âge</h1>
+
+    <div class="text-show-responsive-detail">
+    {{ include('tranche_age/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('tranche_age_index') }}"  class="edit-btn btn-responsive-global">Liste des tranches d'âges</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

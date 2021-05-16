@@ -1,0 +1,206 @@
+<?php //%255BApp%255CEntity%255CCategorie%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Categorie',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Categorie',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\CategorieRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'libelle' => [
+                        'fieldName' => 'libelle',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 50,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'libelle',
+                    ],
+                    'dureeEmpruntMax' => [
+                        'fieldName' => 'dureeEmpruntMax',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'duree_emprunt_max',
+                    ],
+                    'dureeEmpruntMaxNouveaute' => [
+                        'fieldName' => 'dureeEmpruntMaxNouveaute',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'duree_emprunt_max_nouveaute',
+                    ],
+                    'nbEmpruntMax' => [
+                        'fieldName' => 'nbEmpruntMax',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'nb_emprunt_max',
+                    ],
+                    'nbEmpruntMaxNouveaute' => [
+                        'fieldName' => 'nbEmpruntMaxNouveaute',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'nb_emprunt_max_nouveaute',
+                    ],
+                    'dureeNouveaute' => [
+                        'fieldName' => 'dureeNouveaute',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'duree_nouveaute',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                    'duree_emprunt_max' => 'dureeEmpruntMax',
+                    'duree_emprunt_max_nouveaute' => 'dureeEmpruntMaxNouveaute',
+                    'nb_emprunt_max' => 'nbEmpruntMax',
+                    'nb_emprunt_max_nouveaute' => 'nbEmpruntMaxNouveaute',
+                    'duree_nouveaute' => 'dureeNouveaute',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                    'dureeEmpruntMax' => 'duree_emprunt_max',
+                    'dureeEmpruntMaxNouveaute' => 'duree_emprunt_max_nouveaute',
+                    'nbEmpruntMax' => 'nb_emprunt_max',
+                    'nbEmpruntMaxNouveaute' => 'nb_emprunt_max_nouveaute',
+                    'dureeNouveaute' => 'duree_nouveaute',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'categorie',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'genres' => [
+                        'fieldName' => 'genres',
+                        'joinTable' => [
+                            'name' => 'categorie_genre',
+                            'joinColumns' => [
+                                [
+                                    'name' => 'categorie_id',
+                                    'referencedColumnName' => 'id',
+                                    'onDelete' => 'CASCADE',
+                                ],
+                            ],
+                            'inverseJoinColumns' => [
+                                [
+                                    'name' => 'genre_id',
+                                    'referencedColumnName' => 'id',
+                                    'onDelete' => 'CASCADE',
+                                ],
+                            ],
+                        ],
+                        'targetEntity' => 'App\\Entity\\Genre',
+                        'mappedBy' => null,
+                        'inversedBy' => 'categories',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 8,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Categorie',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'joinTableColumns' => [
+                            'categorie_id',
+                            'genre_id',
+                        ],
+                        'isOnDeleteCascade' => true,
+                        'relationToSourceKeyColumns' => [
+                            'categorie_id' => 'id',
+                        ],
+                        'relationToTargetKeyColumns' => [
+                            'genre_id' => 'id',
+                        ],
+                    ],
+                    'articles' => [
+                        'fieldName' => 'articles',
+                        'mappedBy' => 'categorie',
+                        'targetEntity' => 'App\\Entity\\Article',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 4,
+                        'inversedBy' => null,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\Categorie',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

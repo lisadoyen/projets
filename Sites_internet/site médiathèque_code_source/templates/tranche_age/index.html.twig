@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Listes des Tranches d'âges</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>AgeMin</th>
+                <th>AgeMax</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for tranche_age in tranche_ages %}
+            <tr>
+                <td>{{ tranche_age.id }}</td>
+                <td>{{ tranche_age.libelle }}</td>
+                <td>{{ tranche_age.ageMin }}</td>
+                <td>{{ tranche_age.ageMax }}</td>
+                <td>
+                    <a href="{{ path('tranche_age_show', {'id': tranche_age.id}) }}" class="edit-btn btn-responsive-global">Details</a>
+                    <a href="{{ path('tranche_age_edit', {'id': tranche_age.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">pas de tranche d'âge dans la base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tranche_age_new') }}" class="edit-btn btn-responsive-global">Ajouter</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

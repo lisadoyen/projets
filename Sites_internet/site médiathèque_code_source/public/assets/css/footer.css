@@ -1,0 +1,27 @@
+footer {
+    display: table-row;
+    height: 8vh;
+    background-color: var(--second-color);
+    text-align: center;
+    font-size: 2.5vh;
+    box-shadow: rgba(0, 0, 0, 0.15) -1.25px -1.95px 2.6px;
+}
+footer > .container > .row > .col-sm{
+    padding: 3vh;;
+}
+
+a.lien{
+    color:white;
+    text-decoration: none;
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+ a.lien:hover {
+    transition: 0.4s;
+    filter: brightness(10%);
+}
+footer > .container >  small{
+    color:white;
+}

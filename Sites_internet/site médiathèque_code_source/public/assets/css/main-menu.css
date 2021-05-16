@@ -1,0 +1,290 @@
+* {font-family: "Avenir Next", "Avenir", sans-serif;}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    display: table;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.search-in-nav-responsive{
+    display: none;
+}
+
+nav.main-menu{
+    position: sticky;
+    top: 0;
+    height: 8.5vh;
+    display: flex;
+    z-index: 1000;
+    background-color:var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
+}
+
+img.icon{
+    height: 4vh;
+    width:  4vh;
+    position: absolute;
+    top : 2.5vh;
+    transition: 0.3s;
+    filter: brightness(10%);
+}
+img.icon:hover{
+    transition: 0.3s;
+    filter: brightness(100%);
+}
+h1#main-title {
+    color:black;
+    text-decoration: none;
+    left: 10vh;
+    top : 2.2vh;
+    font-size: 4vh;
+    position: absolute;
+}
+
+img.shopCar{right: 33.5vh;top: 2.6vh;}
+img.fav{right: 28vh;}
+img.account{right: 23vh;}
+img.logout{right: 8vh;}
+
+nav.sub-menu{
+    position: sticky;
+    top: 8.5vh;
+    height: auto;
+    display: flex;
+    z-index: 999;
+    background-color: var(--second-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
+    color:white;
+    text-align: center;
+    vertical-align: middle;
+}
+nav.sub-menu > .container > .row > div.col-sm{
+    padding: 1vh;
+}
+a.media-item{
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 2.5vh;
+    text-transform: uppercase;
+}
+
+a.media-item:hover {
+    transition: 0.4s;
+    color: #232323;
+}
+
+.sub-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.sub-dropdown-content {
+    margin-top:1vh;
+    display: none;
+    left: 0;
+    columns:2;
+    position: absolute;
+    background-color: var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
+    z-index: 998;
+}
+
+.sub-dropdown-content a {
+    color: #232323;
+    padding: 2vh;
+    text-decoration: none;
+    display: block;
+    min-width: 20vh;
+    text-align: left;
+    border-bottom: 0.5vh solid var(--main-color);
+}
+
+.sub-dropdown-content a:hover {
+    color: var(--second-color);
+    border-bottom: 0.5vh solid var(--second-color);
+    transition:0.3s;}
+
+.sub-dropdown:hover .sub-dropdown-content {
+    display: block;
+}
+
+
+input#burger{
+    visibility: hidden;
+    display: contents;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+input#burger + label {
+    position: fixed;
+    top: 2.7vh;
+    right: 2vh;
+    height: 4vh;
+    width: 4vh;
+    z-index: 1005;
+    margin: 0;
+}
+
+input#burger + label span.barre:first-child {top: 0%;}
+input#burger + label span.barre {
+    position: absolute;
+    width: 100%;
+    height: 0.65vh;
+    top: 33.33333%;
+    display: block;
+    border-radius: 1vh;
+    background: var(--second-color);
+    filter: brightness(10%);
+    transition: 0.3s;
+}
+input#burger + label span.barre:last-child { top:66.66666%; }
+
+body label:hover {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input#burger:hover + label span.barre {
+    background-color: var(--second-color);
+    opacity: 80%;
+    filter: brightness(100%);
+}
+
+input#burger:checked + label span.barre {
+    opacity: 0;
+    top: 1.2vh;
+}
+
+input#burger:checked + label span.barre:first-child {
+    opacity: 1;
+    transform: rotate(45deg);
+}
+
+input#burger:checked + label span.barre:last-child {
+    opacity: 1;
+    transform: rotate(-45deg);
+}
+
+input#burger ~ nav#lateral-menu{
+    box-shadow: rgba(0, 0, 0, 0.15) -1.25px 1.95px 2.6px;
+    color: var(--second-color);
+    background-color: var(--main-color);
+    position: fixed;
+    top: 8.2vh;
+    right: -50.2vh;
+    width: 50vh;
+    font-size:1.8vh ;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transition: right 0.4s ease-in-out;;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+}
+
+input#burger:checked ~ nav#lateral-menu {
+    right: 0;
+}
+
+
+input#burger ~ nav#lateral-menu > ul#lateral-menu {
+    visibility: hidden;
+}
+
+input#burger:checked ~ nav#lateral-menu > ul#lateral-menu {
+    position: absolute;
+    list-style: none;
+    text-decoration: none;
+    top: 3%;
+    left: 3%;
+    right: 3%;
+    bottom: 3%;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    transition: 0.4s;
+}
+
+input#burger:checked ~ nav#lateral-menu > ul#lateral-menu >li.lateral-menu{
+    text-align:right;
+    visibility: visible;
+    transition: 0.4s;
+}
+
+input#burger ~ nav#lateral-menu > ul#lateral-menu >li.lateral-menu> a.lateral-menu {
+    color: var(--second-color);
+    filter: brightness(10%);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 2vh;
+    display: block;
+}
+
+input#burger ~ nav#lateral-menu > ul#lateral-menu >li.lateral-menu> a.lateral-menu:hover {
+    transition: 0.4s;
+    filter: brightness(100%);
+}
+
+/* Menu plus petit écran */
+/* Sandwich et menu nav */
+@media (max-width: 1350px){
+    .sub-dropdown-content {
+        columns : 3;
+        width: 100%;
+        padding-left: 5vh;
+    }
+
+    .sub-dropdown-content {
+        margin-top:1vh;
+        display: none;
+        columns:1;
+        padding-left: 0;
+        position: absolute;
+        background-color: var(--main-color);
+        box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
+        z-index: 998;
+    }
+
+    .sub-dropdown-content a {
+        padding: 1vh;
+        min-width:auto;
+        text-align: center;
+    }
+}
+@media (max-width: 800px){
+    input#burger:checked ~ nav#lateral-menu {
+        width: 100%;
+        height: 100%;
+        font-size:2vh ;
+    }
+
+    input#burger:checked ~ nav#lateral-menu > ul#lateral-menu{
+        top: 3%;
+        left: 3%;
+        right: 3%;
+        bottom: 3%;
+    }
+
+    input#burger:checked ~ nav#lateral-menu > ul#lateral-menu >li.lateral-menu{
+        text-align: center;
+    }
+
+    input#burger ~ nav#lateral-menu > ul#lateral-menu >li.lateral-menu> a.lateral-menu {
+        padding: 2vh;
+    }
+
+    img.shopCar{right: 23.5vh;top: 2.6vh;}
+    img.fav{right: 18vh;}
+    img.account{right: 13vh;}
+}

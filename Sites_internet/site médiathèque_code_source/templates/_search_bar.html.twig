@@ -1,0 +1,14 @@
+<div class="searchbar form-group">
+    {% if donnees.search is defined and donnees.search is empty %}
+        <input value="{{donnees.search|default('')}}" class="search_input" type="text" name="search" placeholder="Search...">
+    {% else %}
+        {% if donnees.search is not defined %}
+            <input value="{{donnees.search|default('')}}" class="search_input" type="text" name="search" placeholder="Search...">
+        {% else %}
+            <input value="{{donnees.search|default('')}}" class="search-value" type="text" name="search" placeholder="Search...">
+        {% endif %}
+    {% endif %}
+    <a type="submit" value="{{donnees.search|default('')}}" href="{{ path('articles_show') }}" class="search_icon">
+        <img src="{{asset('assets/images/yellow/search.png')}}" class="search-icon" alt="">
+    </a>
+</div>

@@ -1,0 +1,22 @@
+.pagination{
+    color : var(--second-color);
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+.pagination a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: 5vh;
+    padding: 1vh;
+    display: block;
+    border-radius:50%;
+}
+.pagination a:hover {
+    background-color:var(--second-color);
+    border-radius:50%;
+    transition: 0.4s;
+}
+.current{
+    padding: 1vh;
+}

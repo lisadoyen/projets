@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('article_delete', {'id': article.id}) }}" onsubmit="return confirm('Déclasser l\'article le rendra \'vendable\' mais ne le supprimera pas de la BDD');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+    <button class="edit-btn btn-responsive-global">Déclasser</button>
+</form>

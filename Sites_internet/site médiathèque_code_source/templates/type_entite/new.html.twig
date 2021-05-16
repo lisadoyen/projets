@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Créer un nouveau TypeEntite</h1>
+
+    <div class="text-show-responsive-detail">
+        {{ include('type_entite/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('type_entite_index') }}" class="edit-btn btn-responsive-global ml-0">Liste des TypeEntite</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

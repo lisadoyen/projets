@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row pl-5 pt-5 pr-5">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-9">
+                    <span style="font-size: 4vh;font-weight: bold;color : #aa2222 !important;"> Commentaires </span>
+                </div>
+                <div class="col-lg-3">
+                    {{ render(controller('App\\Controller\\AvisController::getTotalCommentairesByArticle',{ 'idArticle': article.id })) }}
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row pl-5 pr-5">
+        <div class="col-lg-8">
+            {% if avis is defined and avis is not empty %}
+            <div class="scrollbar">
+                {% for av in avis %}
+                        <div class="row col-lg-12">
+                            <div class="col-lg-1">
+                                {% if av.utilisateur.avatar == NULL %}
+                                    <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-pseudo-responsive">
+                                {% else %}
+                                    <img src="{{ av.utilisateur.avatar }}" alt="{{ av.utilisateur.avatar }}" class="img-pseudo-responsive-no">
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="text-size-title"><span class="text-orange text-bold"> {{ av.utilisateur.username }} </span></div>
+                                <div class="text-size pt-3">{{ av.texte | raw }}</div>
+                                <div class="text-size pt-3">Le {{ av.date|date('d/m/Y') }} à {{ av.date|date('H:m') }}</div>
+                            </div>
+                            <div class="col-lg-4">
+                            {% if av.note is not empty %}
+                                <p>note : {{ av.note }}
+                                    {% for note in 1..av.note %}
+                                        <a href="#"><i id="{{ note }}" class="fas fa-star fa-2x text-warning"></i></a>
+                                    {% endfor %}
+                                    {% if av.note != 5 %}
+                                        {% for n in av.note..4 %}
+                                            <a href="#"><i id="{{ n }}" class="far fa-star fa-2x text-warning"></i></a>
+                                        {% endfor %}
+                                    {% endif %}
+                                </p>
+                            {% endif %}
+                            </div>
+                        </div>
+                    <hr>
+                {% endfor %}
+            </div>
+            {% else %}
+                <div class="pas-de-com-responsive">
+                    <p>Pas de commentaire</p>
+                </div>
+            {% endif %}
+            </div>
+        <div class="col-lg-4 text-center">
+            <div class="text-detail-size-subtitle text-responsive-detail ajout-com"><span class="text-bold">Ajouter un commentaire et/ou attribuer une note</span></div>
+            {{ form_start(form) }}
+            <p>Veuillez saisir une note :</p>
+            <ul class="rating">
+                <li>
+                    <span class="ratingSelector">
+                        {% for i in 1..5 %}
+                            <input class="radio" name="note" value="{{ i }}" id="star{{ i }}" type="radio">
+                            <label class="full" for="star{{ i }}"></label>
+                        {% endfor %}
+                    </span>
+                </li>
+            </ul>
+            <input type="hidden" name="token" value="{{ csrf_token('add_commentaire')}}"/>
+            <p>Veuillez saisir un commentaire :</p>
+            {{ form_widget(form.texte) }}
+            <button type="submit" class="edit-btn btn-responsive-detail">{{ action|default('Valider') }}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

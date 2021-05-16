@@ -1,0 +1,131 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div class="container-fluid p-5">
+        <h1>Statistiques</h1>
+        <hr>
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <h3 class="pb-3" style="font-weight: bold;color : #aa2222 !important;">
+                    Les 10 premiers articles les plus empruntés</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>Nombre d'emprunts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in allArticles %}
+                        {% if article == allArticles[0] %}
+                            <tr style="background-color: #1c897f; color: white">
+                                <td>{{ article.titre | capitalize }}</td>
+                                <td>{{ article.categorie | capitalize }}</td>
+                                <td>{{ article.nbEmpruntParArticle }}</td>
+                            </tr>
+                        {% elseif article == allArticles[1] %}
+                                <tr style="background-color: #63cbc1">
+                                    <td>{{ article.titre | capitalize }}</td>
+                                    <td>{{ article.categorie | capitalize }}</td>
+                                    <td>{{ article.nbEmpruntParArticle }}</td>
+                                </tr>
+                        {% elseif article == allArticles[2] %}
+                                <tr style="background-color: #79f2e6">
+                                    <td>{{ article.titre | capitalize }}</td>
+                                    <td>{{ article.categorie | capitalize }}</td>
+                                    <td>{{ article.nbEmpruntParArticle }}</td>
+                                </tr>
+                        {% else %}
+                            <tr>
+                                <td>{{ article.titre | capitalize }}</td>
+                                <td>{{ article.categorie | capitalize }}</td>
+                                <td>{{ article.nbEmpruntParArticle }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="pb-3" style="font-weight: bold;color : #aa2222 !important;">Graphique des 10 premiers articles les plus empruntés</h3>
+                {% if articles is defined %}
+                <canvas id="chartByArticle" height="200"></canvas>
+                    {% else %}
+                        coucou
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center">
+            <div class="col-lg-6">
+                {% include 'statistiques/_filtre_statistique.html.twig' %}
+            </div>
+            <div class="col-lg-6">
+                <h3 class="pb-3" style="font-weight: bold;color : #aa2222 !important;">
+                    Graphique du nombre d'emprunt en fonction du filtre</h3>
+                    <canvas id="chartByCategorie" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block charts %}
+<script type="text/javascript">
+    let chartNbEmpruntByArticle = document.getElementById('chartByArticle').getContext('2d');
+    let chartByArticle = new Chart(chartNbEmpruntByArticle, {
+        type: 'bar',
+        data: {
+            labels: [{% for article in allArticles %}'{{article.titre | capitalize}}',{% endfor %}],
+            datasets: [{
+                backgroundColor: ['rgb(28,137,127)','rgb(99, 203, 193)', 'rgb(121, 242, 230)'],
+                data:  [{% for article in  allArticles %}{{article.nbEmpruntParArticle}},{% endfor %}]
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            responsive: true
+        }
+    });
+
+    let chartNbEmpruntByCategorie = document.getElementById('chartByCategorie').getContext('2d');
+    let chartByCategorie = new Chart(chartNbEmpruntByCategorie, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for article in articles%},
+                    {% if article.categorie is defined %}
+                        '{{article.categorie | capitalize}}'
+                    {% endif %},{% endfor %},
+                {% for article in articles%},
+                    {% if article.genre is defined %}
+                        '{{article.genre | capitalize}}'
+                    {% endif %},
+                {% endfor %}
+            ],
+            datasets: [{
+                backgroundColor: [{% for article in articles %},{% if article.nbEmpruntByCategorie is defined %} 'rgb(28,137,127)', 'rgb(121, 242, 230)',
+                    {% endif %}{% if article.nbEmpruntByGenre is defined %}  'rgb(121, 242, 230)', 'rgb(121, 242, 230)'{% endif %},{% endfor %}],
+                data:  [{% for article in articles %},{% if article.nbEmpruntByCategorie is defined %}{{article.nbEmpruntByCategorie}}{% endif %},{% endfor %},
+                    {% for article in articles %},{% if article.nbEmpruntByGenre is defined %}{{article.nbEmpruntByGenre}}{% endif %},{% endfor %}]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 50,
+                        suggestedMax: 100
+                    }
+                }]
+            },
+            legend: {
+                display: false
+            },
+            responsive: true
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Modifié les TypeEntite</h1>
+
+    <div class="text-show-responsive-detail">
+        {{ include('type_entite/_form.html.twig', {'button_label': 'Valider'}) }}
+    </div>
+    <a href="{{ path('type_entite_index') }}"  class="edit-btn btn-responsive-global ml-0">Liste des Entites</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {#{ include('type_entite/_delete_form.html.twig') }#}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">TypeEntite</h1>
+
+    <table class="table table-responsive">
+        <tbody class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <td>{{ type_entite.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ type_entite.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_entite_index') }}" class="edit-btn btn-responsive-global">Liste des TypeEntite</a>
+    <a href="{{ path('type_entite_edit', {'id': type_entite.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {{ include('type_entite/_delete_form.html.twig') }}
+</div>
+{% endblock %}

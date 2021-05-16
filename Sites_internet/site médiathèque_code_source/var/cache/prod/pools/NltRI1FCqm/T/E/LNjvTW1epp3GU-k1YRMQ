@@ -1,0 +1,52 @@
+<?php //%255BApp%255CController%255CArticles%255CArticleController%2523showAll%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+        clone $p['Symfony\\Component\\Routing\\Annotation\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Annotation\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Annotation\\Route'],
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/articles/show',
+                '/articles/categorie/{idCategorie}/show',
+                '/articles/genres/{idGenre}/show',
+                '/articles/categorie/{idCategorie}/genres/{idGenre}/show',
+            ],
+            'name' => [
+                'articles_show',
+                'categories_id_articles_show',
+                'genres_id_articles_show',
+                'categories_id_genres_id_articles_show',
+            ],
+            'methods' => [
+                [
+                    'GET',
+                    'POST',
+                ],
+                [
+                    'GET',
+                    'POST',
+                ],
+                [
+                    'GET',
+                    'POST',
+                ],
+                [
+                    'GET',
+                    'POST',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+        $o[3],
+    ],
+    []
+); }];

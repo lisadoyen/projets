@@ -1,0 +1,45 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Categorie</h1>
+
+    <table class="table table-responsive">
+        <tbody class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ categorie.libelle }}</td>
+            </tr>
+            <tr>
+                <th>DureeEmpruntMax</th>
+                <td>{{ categorie.dureeEmpruntMax }}</td>
+            </tr>
+            <tr>
+                <th>DureeEmpruntMaxNouveaute</th>
+                <td>{{ categorie.dureeEmpruntMaxNouveaute }}</td>
+            </tr>
+            <tr>
+                <th>NbEmpruntMax</th>
+                <td>{{ categorie.nbEmpruntMax }}</td>
+            </tr>
+            <tr>
+                <th>NbEmpruntMaxNouveaute</th>
+                <td>{{ categorie.nbEmpruntMaxNouveaute }}</td>
+            </tr>
+            <tr>
+                <th>DureeNouveaute</th>
+                <td>{{ categorie.dureeNouveaute }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="edit-btn btn-responsive-global" href="{{ path('categorie_index') }}">Liste des catégories</a>
+    <a class="edit-btn btn-responsive-global" href="{{ path('categorie_edit', {'id': categorie.id}) }}">Modifier</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+</div>
+{% endblock %}

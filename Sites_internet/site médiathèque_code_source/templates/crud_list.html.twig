@@ -1,0 +1,105 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Ajouter, modifier, supprimer des éléments</h1><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Entite (prénom et nom du TypeEntite)</div>
+            <div class="col-sm">
+                <a href="{{ path('entite_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('entite_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">TypeEntite (auteur, réalisateur...)</div>
+            <div class="col-sm">
+                <a href="{{ path('type_entite_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('type_entite_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Annonce</div>
+            <div class="col-sm">
+                <a href="{{ path('annonce_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('annonce_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Categorie</div>
+            <div class="col-sm">
+                <a href="{{ path('categorie_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('categorie_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Genre</div>
+            <div class="col-sm">
+                <a href="{{ path('genre_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('genre_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Rubrique</div>
+            <div class="col-sm">
+                <a href="{{ path('rubrique_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('rubrique_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Tag</div>
+            <div class="col-sm">
+                <a href="{{ path('tag_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('tag_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Lien</div>
+            <div class="col-sm">
+                <a href="{{ path('lien_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('lien_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">TrancheAge</div>
+            <div class="col-sm">
+                <a href="{{ path('tranche_age_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('tranche_age_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Entreprise</div>
+            <div class="col-sm">
+                <a href="{{ path('entreprise_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('entreprise_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div><hr>
+        <div class="row  text-show-responsive-detail">
+            <div class="col-sm">Fonction</div>
+            <div class="col-sm">
+                <a href="{{ path('fonction_index') }}" class="edit-btn btn-responsive-crud">Menu</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('fonction_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

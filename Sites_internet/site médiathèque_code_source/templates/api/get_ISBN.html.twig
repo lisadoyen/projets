@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+
+    <div class="container" style="margin-top: 1vh; padding: 5vh; height: 70vh; background-color: var(--second-color)">
+            <h1 style="color: var(--main-color);">Barre de recherche</h1>
+            <form action="{{ path("api_livre_search_isbn") }}" method="post">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input class="form-control" name="isbn" type="text" id="search-isbn" value="" placeholder="Rechercher un isbn"/>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="submit" value="Valider">
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 1vh; color: #fcaf64;font-style: italic;">
+                    {% if erreurs is defined %}
+                        {% for erreur in erreurs %}
+                            <div>* {{ erreur }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </form>
+            <div id="result-isbn" style="margin-top: 5em;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{asset('assets/js/bootstrap.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search-isbn').keyup(function(){
+                $("#result-isbn").html('');
+                let isbn = $(this).val();
+                if(isbn !== ""){
+                    console.log(isbn);
+                    axios.get('/articles/get/'+isbn)
+                        .then(function (response) {
+                            var livre = response.data;
+                            console.log(livre.titre)
+                            let ligne = 'Titre : ' + livre.titre +'<br>';
+                            ligne += 'Sous Titre : ' + livre.sous_titre +'<br>';
+                            ligne += 'Auteur : ' + livre.auteur +'<br>';
+                            ligne += 'Editeur : ' + livre.editeur +'<br>';
+                            ligne += 'Date de publication : ' + livre.dateDePublication +'<br>';
+                            ligne += 'Description : ' + livre.description +'<br>';
+                            ligne += 'ISBN : ' + livre.isbn +'<br>';
+                            ligne += 'Image  : ' +'<img src="'+livre.image+'">' +'<br>';
+                            let data = [livre.titre,livre.sous_titre,livre.auteur,livre.editeur,livre.dateDePublication,livre.description,livre.isbn,livre.image];
+                            let url = "{{ path('add_livre') }}"
+                            ligne += '<form class="d-lg-inline-block" action="'+url+'" method="POST">';
+                            ligne += '<input type="hidden" name="titre" value="'+data[0]+'">';
+                            ligne += '<input type="hidden" name="sous_titre" value="'+data[1]+'">';
+                            ligne += '<input type="hidden" name="auteur" value="'+data[2]+'">';
+                            ligne += '<input type="hidden" name="editeur" value="'+data[3]+'">';
+                            ligne += '<input type="hidden" name="dateDePublication" value="'+data[4]+'">';
+                            ligne += '<input type="hidden" name="description" value="'+data[5]+'">';
+                            ligne += '<input type="hidden" name="isbn" value="'+data[6]+'">';
+                            ligne += '<input type="hidden" name="image" value="'+data[7]+'">';
+                            ligne += '<button type="submit" class="btn btn-success btn-sm"</i>Créer un livre</button>'
+                            ligne += '</form>';
+                            document.getElementById("result-isbn").innerHTML=ligne;
+                        })
+                        .catch(function (error) {
+                            console.log("La recherche a rencontré un problème");
+                        });
+                }
+            });
+        });
+    </script>
+{% endblock %}

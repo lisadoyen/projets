@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/article-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container cadre" onload="changeGenre()">
+
+    <h1>Ajouter un article</h1>
+    {{ include('api/form_livre/_form.html.twig', {'button_label': 'Ajouter l\'article'}) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">liste des articles</h1><br>
+
+    <a href="{{ path('article_new') }}" class="edit-btn btn-responsive-global">Créer un article</a>
+
+    <table class="table table-responsive">
+        <thead class="text-responsive">
+            <tr>
+                <th>Id</th>
+                <th>Gencode</th>
+                <th>CodeArticle</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Vignette</th>
+                <th>DatePublication</th>
+                <th>MontantObtention</th>
+                <th>MontantCaution</th>
+                <th>MontantVente</th>
+                <th>Observation</th>
+                <th>Numerique</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody  class="text-responsive">
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.gencode }}</td>
+                <td>{{ article.codeArticle }}</td>
+                <td>{{ article.titre }}</td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.vignette }}</td>
+                <td>{{ article.datePublication ? article.datePublication|date('Y-m-d') : '' }}</td>
+                <td>{{ article.montantObtention }}</td>
+                <td>{{ article.montantCaution }}</td>
+                <td>{{ article.montantVente }}</td>
+                <td>{{ article.observation }}</td>
+                <td>{{ article.numerique ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}" class="edit-btn btn-responsive-global">Revenir à la liste</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">pas d'article trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

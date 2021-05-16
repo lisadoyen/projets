@@ -1,0 +1,96 @@
+<div class="row">
+    {% if articles is defined %}
+        {% for article in articles | slice(0, 30) %}
+            <div class="col-lg-12 p-2">
+                <div class="row">
+                    <div class="col-lg-2 article-img-responsive-liste">
+                        {% include 'articles/show_elements_articles/show_nouveau.html.twig' %}
+                        {% if article.vignette == NULL %}
+                            <input type="hidden" name="id" value="{{ article.id }}">
+                            <a href="{{ path('article_details', {id: article.id}) }}">
+                                <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-liste-no"></a>
+                        {% else %}
+                            <input type="hidden" name="id" value="{{ article.id }}">
+                            <a href="{{ path('article_details', {id: article.id}) }}">
+                                <img src="{{ article.vignette }}" alt="{{ article.vignette }}" class="img-liste"></a>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-10 article-info-responsive-liste">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="text-size-title"><span class="text-bold">{{article.titre | capitalize }}</span></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="text-size">
+                                    {% include 'articles/show_elements_articles/show_entite.html.twig' %}
+                                </div>
+                                <div class="text-size"><span class="text-orange">date de publication : </span>{{article.datePublication is empty ? "inconnu" : article.datePublication|date("d/m/Y")}}</div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="text-size">
+                                    <span class="text-orange">genre : </span>
+                                    {{article.genre.libelle}}
+                                </div>
+                                <div class="text-size">
+                                    <span class="text-orange">rubrique(s) : </span>
+                                    {% if article.rubriques[0].libelle is defined %}
+                                        {{ article.rubriques[0].libelle }} <!-- mettre la liste quand plusieurs rubriques -->
+                                    {% else %}
+                                        aucune
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="text-size"><span class="text-orange">moyenne des avis : </span>
+                                    {% include 'articles/show_elements_articles/show_moyenne.html.twig' %}
+                                </div>
+                                {%  if article.statut.libelle == "vendable" or article.statut.libelle == "reserve_achat" %}
+                                    <div class="text-size"><span class="text-orange">prix : </span><span style="color: red">{{ article.montantVente }}€</span></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-lg-9">
+                                <div class="text-justify text-size">
+                                    {% if article.categorie.libelle == 'video' %}
+                                        <span class="text-orange">synopsis : </span>
+                                    {% elseif article.categorie.libelle == 'livre' %}
+                                        <span class="text-orange">résumé : </span>
+                                    {% elseif article.categorie.libelle == 'jeux' %}
+                                        <span class="text-orange">description : </span>
+                                    {% elseif article.categorie.libelle == 'musique' %}
+                                        <span class="text-orange">description : </span>
+                                    {% endif %}
+                                    <p class="readMore"> <!--changer description en article.description-->
+                                        {% if article.description is not empty %}
+                                            {{ article.description | raw }}
+                                        {% else %}
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas risus turpis, cursus
+                                            a aliquet non, lacinia eget nibh. Donec massa enim, placerat nec imperdiet ac, convallis
+                                            et neque. Sed arcu turpis, facilisis at orci quis, mollis malesuada augue. Donec in
+                                            nulla et turpis hendrerit sollicitudin et in elit. Vivamus fermentum erat purus, a
+                                            fringilla arcu faucibus convallis. Vestibulum commodo eu mi vitae ultricies. Ut
+                                            sollicitudin risus eget ipsum elementum hendrerit. Donec fringilla massa sodales
+                                            erat suscipit, quis maximus enim tincidunt. Nam vehicula leo nec eros dictum malesuada.
+                                            Suspendisse volutpat quam eget rhoncus porttitor.
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 pt-4">
+                                <div class="row">
+                                    {% include 'articles/show_elements_articles/show_button.html.twig' %}
+                                </div>
+                            </div>
+                            <div class="col-lg-1 pt-4 article-logo-responsive-liste">
+                                {% include 'articles/show_elements_articles/show_symbole.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-liste">
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+

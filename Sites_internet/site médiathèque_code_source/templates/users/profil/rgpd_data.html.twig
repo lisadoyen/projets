@@ -1,0 +1,259 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <div class="row text-responsive">
+            <div class="col-sm">
+                {% if app.user.avatar is not empty %}
+                    <img class="img-profil" src="{{asset('assets/images/account/')}}{{app.user.avatar}}" alt="Image {{app.user.avatar}}" >
+                {% else %}
+                    <img class="img-profil" src="{{asset('assets/images/account/account_yellow.png')}}" alt="Aucun avatar">
+                {% endif %}
+            </div>
+            <div class="col-sm">
+                <h1 class="titre-responsive">Vos données personnelles</h1>
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Matricule :
+            </div>
+            <div class="col-sm">
+                {{  app.user.matricule  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Identifiant :
+            </div>
+            <div class="col-sm">
+                {{  app.user.username  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Prenom :
+            </div>
+            <div class="col-sm">
+                {{  app.user.prenom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Nom :
+            </div>
+            <div class="col-sm">
+                {{  app.user.nom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Sexe :
+            </div>
+            <div class="col-sm">
+                {{  app.user.sexe  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Entreprise :
+            </div>
+            <div class="col-sm">
+                {{  app.user.entreprise.nom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Fonction :
+            </div>
+            <div class="col-sm">
+                {{  app.user.fonction.libelle  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Email de récupération :
+            </div>
+            <div class="col-sm">
+                {{  app.user.emailRecup  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Email personnel :
+            </div>
+            <div class="col-sm">
+                {{  app.user.emailPerso  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Email Professionnel :
+            </div>
+            <div class="col-sm">
+                {{  app.user.emailPro  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Télephone personnel principal :
+            </div>
+            <div class="col-sm">
+                {{  app.user.telPerso  }}
+            </div>
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Télephone personnel secondaire :
+            </div>
+            <div class="col-sm">
+                {{  app.user.telPerso2  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Télephone professionnel principal :
+            </div>
+            <div class="col-sm">
+                {{  app.user.telPro  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Télephone professionnel secondaire :
+            </div>
+            <div class="col-sm">
+                {{  app.user.telPro2  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Notification personnel :
+            </div>
+            <div class="col-sm">
+                {% if app.user.notificationPerso == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+            <div class="col-sm border-left">
+                Notification professionnel :
+            </div>
+            <div class="col-sm">
+                {% if app.user.notificationPro == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Adresse de la rue :
+            </div>
+            <div class="col-sm">
+                {{  app.user.adresseRue  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Compléments :
+            </div>
+            <div class="col-sm">
+                {{  app.user.adresseRueComplement }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Ville :
+            </div>
+            <div class="col-sm">
+                {{  app.user.ville }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Code postal :
+            </div>
+            <div class="col-sm">
+                {{  app.user.codePostal }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Droit Emprunt :
+            </div>
+            <div class="col-sm">
+                {% if app.user.droitEmprunt == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+            <div class="col-sm border-left">
+                Droit d'achat :
+            </div>
+            <div class="col-sm">
+                {% if app.user.droitAchat == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Date de création :
+            </div>
+            <div class="col-sm">
+                {{  app.user.dateCreation | date('d/m/Y')}}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Date de modification :
+            </div>
+            <div class="col-sm">
+                {{  app.user.dateModification | date('d/m/Y')}}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Commentaire :
+            </div>
+            <div class="col-sm">
+                {{  app.user.commentaireUtilisateur}}
+            </div>
+        </div><hr>
+        <div class="row">
+            <div class="col-sm">
+                <a href="{{ path('profil') }}" class="edit-btn float-left btn-responsive-global">Revenir au profil</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('mes_donnees_download') }}" class="edit-btn float-right btn-responsive-global">Exporter mes données</a>
+            </div>
+        </div><hr>
+    </div>
+{% endblock %}

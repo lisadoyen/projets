@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/article-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.css') }}">
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Modifier les règles pour un {{ categorie.libelle }}</h1><br>
+
+    <div class="text-show-responsive-detail">
+        {{ include('categorie/_form.html.twig', {'button_label': 'Valider'}) }}
+    </div>
+
+    <a href="{{ path('categorie_index') }}" class="edit-btn btn-responsive-global ml-0">Liste des catégories</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {#{ include('categorie/_delete_form.html.twig') }#}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+{% endblock %}

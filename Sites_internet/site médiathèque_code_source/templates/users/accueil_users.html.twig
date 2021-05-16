@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+
+    <div class="container cadre">
+        <h1 class="titre-responsive">Gérer les utilisateurs</h1><hr>
+        <div class="row">
+            <a href="{{ path('users_show') }}" class="edit-btn btn-responsive-global ">Afficher les utilisateurs</a>
+        </div>
+        <div class="row">
+            <a href="{{ path('users_add') }}" class="edit-btn btn-responsive-global">Ajouter un utilisateur</a>
+        </div>
+    </div>
+
+{% endblock %}

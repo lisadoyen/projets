@@ -1,0 +1,333 @@
+<?php //%255BApp%255CEntity%255CEnregistrement%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Enregistrement',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Enregistrement',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\EnregistrementRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'noCommande' => [
+                        'fieldName' => 'noCommande',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'no_commande',
+                    ],
+                    'datePreparationFini' => [
+                        'fieldName' => 'datePreparationFini',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'date_preparation_fini',
+                    ],
+                    'dateEnregistrement' => [
+                        'fieldName' => 'dateEnregistrement',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'date_enregistrement',
+                    ],
+                    'dateRendu' => [
+                        'fieldName' => 'dateRendu',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'date_rendu',
+                    ],
+                    'dateRenduTheorique' => [
+                        'fieldName' => 'dateRenduTheorique',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'date_rendu_theorique',
+                    ],
+                    'noteCommunication' => [
+                        'fieldName' => 'noteCommunication',
+                        'type' => 'text',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'note_communication',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'no_commande' => 'noCommande',
+                    'date_preparation_fini' => 'datePreparationFini',
+                    'date_enregistrement' => 'dateEnregistrement',
+                    'date_rendu' => 'dateRendu',
+                    'date_rendu_theorique' => 'dateRenduTheorique',
+                    'note_communication' => 'noteCommunication',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'noCommande' => 'no_commande',
+                    'datePreparationFini' => 'date_preparation_fini',
+                    'dateEnregistrement' => 'date_enregistrement',
+                    'dateRendu' => 'date_rendu',
+                    'dateRenduTheorique' => 'date_rendu_theorique',
+                    'noteCommunication' => 'note_communication',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'enregistrement',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'typeEnregistrement' => [
+                        'fieldName' => 'typeEnregistrement',
+                        'joinColumns' => [
+                            [
+                                'name' => 'type_enregistrement_id',
+                                'unique' => false,
+                                'nullable' => false,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'enregistrements',
+                        'targetEntity' => 'App\\Entity\\TypeEnregistrement',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Enregistrement',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'type_enregistrement_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'type_enregistrement_id' => 'type_enregistrement_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'type_enregistrement_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                    'statutEnregistrement' => [
+                        'fieldName' => 'statutEnregistrement',
+                        'joinColumns' => [
+                            [
+                                'name' => 'statut_enregistrement_id',
+                                'unique' => false,
+                                'nullable' => false,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'enregistrements',
+                        'targetEntity' => 'App\\Entity\\StatutEnregistrement',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Enregistrement',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'statut_enregistrement_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'statut_enregistrement_id' => 'statut_enregistrement_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'statut_enregistrement_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                    'utilisateur' => [
+                        'fieldName' => 'utilisateur',
+                        'joinColumns' => [
+                            [
+                                'name' => 'utilisateur_id',
+                                'unique' => false,
+                                'nullable' => false,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'enregistrements',
+                        'targetEntity' => 'App\\Entity\\User',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Enregistrement',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'utilisateur_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'utilisateur_id' => 'utilisateur_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'utilisateur_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                    'article' => [
+                        'fieldName' => 'article',
+                        'joinColumns' => [
+                            [
+                                'name' => 'article_id',
+                                'unique' => false,
+                                'nullable' => false,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'enregistrements',
+                        'targetEntity' => 'App\\Entity\\Article',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Enregistrement',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'article_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'article_id' => 'article_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'article_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                    'staffs' => [
+                        'fieldName' => 'staffs',
+                        'joinTable' => [
+                            'name' => 'enregistrement_user',
+                            'joinColumns' => [
+                                [
+                                    'name' => 'enregistrement_id',
+                                    'referencedColumnName' => 'id',
+                                    'onDelete' => 'CASCADE',
+                                ],
+                            ],
+                            'inverseJoinColumns' => [
+                                [
+                                    'name' => 'user_id',
+                                    'referencedColumnName' => 'id',
+                                    'onDelete' => 'CASCADE',
+                                ],
+                            ],
+                        ],
+                        'targetEntity' => 'App\\Entity\\User',
+                        'mappedBy' => null,
+                        'inversedBy' => 'enregistrements',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 8,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Enregistrement',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'joinTableColumns' => [
+                            'enregistrement_id',
+                            'user_id',
+                        ],
+                        'isOnDeleteCascade' => true,
+                        'relationToSourceKeyColumns' => [
+                            'enregistrement_id' => 'id',
+                        ],
+                        'relationToTargetKeyColumns' => [
+                            'user_id' => 'id',
+                        ],
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

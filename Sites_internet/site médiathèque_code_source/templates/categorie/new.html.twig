@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Créer une nouvelle catégorie</h1>
+
+    <div class="text-show-responsive-detail">
+        {{ include('categorie/_form.html.twig') }}
+    </div>
+
+    <a class="edit-btn btn-responsive-global" href="{{ path('categorie_index') }}">Liste des catégories</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

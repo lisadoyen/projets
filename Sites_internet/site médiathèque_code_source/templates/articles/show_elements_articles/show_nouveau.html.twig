@@ -1,0 +1,7 @@
+{% if nouveaute is defined %}
+    {% for new in nouveaute %}
+        {% if new.id == article.id %}
+            <span class="text-size text-bold text-size-title text-nouveaute"> nouveau !</span>
+        {% endif %}
+    {% endfor %}
+{% endif %}

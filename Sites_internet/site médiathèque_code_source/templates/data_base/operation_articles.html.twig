@@ -1,0 +1,17 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Opérations sur les articles</h1><hr>
+        <div class="row text-show-responsive-detail">
+            <div class="col-lg-4 col-sm-12">
+                <a href="{{ path('article_search') }}" class="edit-btn btn-responsive-crud">Rechercher</a>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <a href="{{ path('article_new') }}" class="edit-btn btn-responsive-crud">Ajouter</a>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <a href="{{ path('api_livre_search_isbn') }}" class="edit-btn btn-responsive-crud">Ajouter avec assistance ISBN</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

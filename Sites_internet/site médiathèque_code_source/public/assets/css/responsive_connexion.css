@@ -1,0 +1,165 @@
+/* petit écran de + en + petit */
+@media screen and (max-width: 1700px){
+    .img-logo{
+        width: 79.2vh;
+        margin-left: 3vh;
+        padding: 3vh;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .img-logo{
+        width: 65vh;
+        margin-left: 3vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: 87vh;
+    }
+}
+
+
+@media screen and (max-width: 990px){
+    .img-logo{
+        width: 50vh;
+        margin-left: 15vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .img-logo{
+        width: 50vh;
+        margin-left: 5vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .img-logo{
+        width: 40vh;
+        margin-left: 5vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .img-logo{
+        width: 40vh;
+        margin-left: 1vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+}
+
+/* Nokia 8110 4G */
+/* Portrait and Landscape */
+@media only screen
+and (min-width: 240px)
+and (max-width: 320px){
+    .img-logo{
+        width: 40vh;
+        margin-left: 1vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+
+    .edit-btn{
+        font-size: 4em;
+    }
+
+    h2{
+        font-size: 7em;
+        padding: 1vh;
+    }
+
+    .input-div > div > h5{
+        font-size: 50px;
+    }
+
+    .input-div.focus > div > h5{
+        top: -15px;
+        font-size: 40px;
+    }
+
+    .mdp-oublie{
+        font-size: 2em;
+    }
+    .input-div > div > input{
+        font-size: 3em;
+    }
+
+    .login-content .input-div{
+        padding : 12px 0;
+    }
+
+    .i i{
+        font-size: 170%;
+    }
+}
+
+/* téléphone standard */
+@media screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    .img-logo{
+        width: 40vh;
+        margin-left: 1vh;
+        padding: 3vh;
+    }
+    .logo{
+        height: auto;
+    }
+
+    .edit-btn{
+        font-size: 4em;
+    }
+
+    h2{
+        font-size: 7em;
+        padding: 1vh;
+    }
+
+    .input-div > div > h5{
+        font-size: 50px;
+    }
+
+    .input-div > div{
+        height: 100px;
+    }
+
+    .input-div.focus > div > h5{
+        top: -15px;
+        font-size: 40px;
+    }
+
+    .mdp-oublie{
+        font-size: 2em;
+    }
+
+    .input-div > div > input{
+        font-size: 3em;
+    }
+
+    .login-content .input-div{
+        padding : 2vh 0;
+    }
+
+    .i i{
+        font-size: 170%;
+    }
+}
+

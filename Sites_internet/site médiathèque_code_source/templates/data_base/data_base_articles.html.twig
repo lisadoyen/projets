@@ -1,0 +1,66 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Opérations sur les articles</h1><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Livres
+            </div>
+            <div class="col-sm">
+                <form action="{{ path('data_base_file', {table:'bibliotheque'}) }}" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter les livres</button>
+                </form>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm">
+                    <a href="" class="edit-btn btn-responsive-global">Importer les livres</a>
+                </div>
+            {% endif %}
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Films
+            </div>
+            <div class="col-sm">
+                <form action="" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter les Films</button>
+                </form>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm">
+                    <a href="" class="edit-btn btn-responsive-global">Importer les films</a>
+                </div>
+            {% endif %}
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Musiques
+            </div>
+            <div class="col-sm">
+                <form action="" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter les Musiques</button>
+                </form>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm">
+                    <a href="" class="edit-btn btn-responsive-global">Importer les musiques</a>
+                </div>
+            {% endif %}
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Jeux
+            </div>
+            <div class="col-sm">
+                <form action="" method="POST" style="display:inline">
+                    <button type="submit" class="edit-btn btn-responsive-global">Exporter les Jeux</button>
+                </form>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm">
+                    <a href="" class="edit-btn btn-responsive-global">Importer les jeux</a>
+                </div>
+            {% endif %}
+        </div><hr>
+    </div>
+{% endblock %}

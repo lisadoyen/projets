@@ -1,0 +1,191 @@
+<div id="1" style="visibility: visible" class="text-responsive">
+    <div>
+        {% if nbArticles is defined and nbArticlesTotal is defined %}
+            <span class="text-bold">{{ nbArticles }} </span> / {{ nbArticlesTotal }} articles
+        {% endif %}
+       <br>
+        {% if (is_granted('ROLE_BENEVOLE')) or (is_granted('ROLE_ADMIN')) %}
+            {% if nbArticlesTotalSortie is defined %}
+                <span class="text-bold">{{ nbArticlesTotalSortie }} </span> articles sorties du site (vendu, donné, perdu)
+            {% endif %}
+        {% endif %}
+    </div>
+    <hr>
+    <form action="{{ path('filter_clear') }}" method="post">
+        <input type="hidden" name="_method" value="GET">
+        <button type="submit" class="edit-btn float-left button-filtre" onclick="return confirm('Voulez-vous vraiment vider le filtre ?')">Vider</button>
+    </form>
+
+    <form method="post" action="{{ path('articles_show') }}" >
+        <input type="hidden" name="token" value="{{ csrf_token('form_articles') }}">
+        <button type="submit" class="edit-btn button-filtre">Filtrer</button>
+
+            <hr>
+            <div>Filtre activé :</div><br>
+            <div class="container" style="color: grey">
+                <u style="text-decoration: none">
+                    {% if donnees.search is defined %}
+                        {% if donnees.search is not empty %}
+                        <li> recherche : <strong>{{ donnees.search }}</strong></li>
+                        {% endif %}
+                    {% endif %}
+                    {% if donnees.categories is defined and categories is not empty %}
+                        {% for categorie in categories %}
+                            {% if donnees.categories[categorie.id] is defined %}
+                                <li> categorie : <strong>{{ categorie.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.genres is defined and genres is not empty %}
+                        {% for genre in genres %}
+                            {% if donnees.genres[genre.id] is defined %}
+                                <li> genre : <strong>{{ genre.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.statuts is defined and statuts is not empty %}
+                        {% for statut in statuts %}
+                            {% if donnees.statuts[statut.id] is defined %}
+                                {% if statut.libelle == 'vendable' or statut.libelle == 'empruntable' %}
+                                    <li> statut : <strong>{{ statut.libelle|capitalize }}</strong></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.ages is defined and ages is not empty %}
+                        {% for age in ages %}
+                            {% if donnees.ages[age.id] is defined %}
+                                <li> age : <strong>{{ age.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.rubriques is defined and rubriques is not empty %}
+                        {% for rubrique in rubriques %}
+                            {% if donnees.rubriques[rubrique.id] is defined %}
+                                <li> rubrique : <strong>{{ rubrique.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.nouveaute is defined and donnees.nouveaute is not empty %}
+                        <li> nouveauté : <strong>activé</strong></li>
+                    {% endif %}
+                    {% if donnees.dateMin is defined and donnees.dateMin is not empty %}
+                        <li> date de publication min : <strong>{{ donnees.dateMin| default('-50years')|date('d/m/Y') }}</strong></li>
+                    {% endif %}
+                    {% if donnees.dateMax is defined and donnees.dateMax is not empty %}
+                        <li> date de publication max : <strong>{{ donnees.dateMax| default('now') |date('d/m/Y')}}</strong></li>
+                    {% endif %}
+                </u>
+           </div>
+
+        <hr>
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-1" data-js="hide"><h5 class="text-responsive">Catégories</h5></a>
+            </div>
+            <div id="mon-bloc-1" class="hide-box p-2">
+                <div class="filtre">
+                    {% for categorie in categories|slice(0, categories|length/2) %}
+                        <input onclick="visible_genre()" type="checkbox" name="categories[]" value="{{ categorie.id }}"{% if donnees.categories[categorie.id] is defined %} checked {% endif %}>
+                        {{ categorie.libelle|capitalize }}
+                        <br/>
+                    {% endfor %}
+                </div>
+                    {% for categorie in categories|slice(categories|length/2, categories|length) %}
+                        <input onclick="visible_genre()" type="checkbox" name="categories[]" value="{{ categorie.id}}"{% if donnees.categories[categorie.id] is defined %} checked {% endif %}>
+                        {{ categorie.libelle|capitalize }}
+                        <br/>
+                    {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-2" data-js="hide"><h5 class="text-responsive">Genres</h5></a>
+            </div>
+            <div id="mon-bloc-2" class="hide-box p-2">
+                <div id="livre_genre">
+                    {% include 'data/livre_genre.html.twig' %}
+                </div>
+                <div id="video_genre">
+                    {% include 'data/video_genre.html.twig' %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-3" data-js="hide"><h5 class="text-responsive">Rubriques</h5></a>
+            </div>
+            <div id="mon-bloc-3" class="hide-box p-2">
+                <div id="livre_rubrique">
+                    {% include 'data/livre_rubriques.html.twig' %}
+                </div>
+                <div id="video_rubrique">
+                    {% include 'data/video_rubriques.html.twig' %}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-5" data-js="hide"><h5 class="text-responsive">Tranche d'âge</h5></a>
+            </div>
+            <div id="mon-bloc-5" class="hide-box p-2">
+                <div class="filtre">
+                    {% for age in ages|slice(0, ages|length/2) %}
+                        <input type="checkbox" name="ages[]" value="{{ age.id }}"{% if donnees.ages[age.id] is defined %} checked {% endif %}>
+                        {{ age.libelle|capitalize }}
+                        <br/>
+                    {% endfor %}
+                </div>
+                {% for age in ages|slice(ages|length/2, ages|length) %}
+                    <input type="checkbox" name="ages[]" value="{{ age.id}}"{% if donnees.ages[age.id] is defined %} checked {% endif %}>
+                    {{ age.libelle|capitalize }}
+                    <br/>
+                {% endfor %}
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label> Date de publication :</label><br>
+            Min : <input id="min" type="date" name="dateMin" value="{{ donnees.dateMin | default('-50years')}}"/>
+            Max : <input id="max" type="date" name="dateMax" value="{{ donnees.dateMax |default('now')}}"/>
+        </div>
+        <hr>
+
+        <div class="form-group">
+            <input class="checkbox" type="checkbox" name="nouveaute" {% if donnees.nouveaute is defined %} checked {% endif %}/>
+            <label>Nouveauté</label>
+        </div>
+
+        <hr>
+        <div class="form-group">
+            <div class="filtre">
+                {% for statut in statuts %}
+                    {% if statut.libelle == 'empruntable' %}
+                        <input class="checkbox" type="checkbox" name="statuts[]" value="{{statut.id}}"{% if donnees.statuts[statut.id] is defined %} checked {% endif %}>
+                        {{ statut.libelle|capitalize }}
+                        <br/>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% for statut in statuts %}
+                {% if statut.libelle == 'vendable'%}
+                        <input class="checkbox" type="checkbox" name="statuts[]" value="{{statut.id}}" {% if donnees.statuts[statut.id] is defined %} checked {% endif %}>
+                    {{ statut.libelle|capitalize }}
+                    <br/>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </form>
+</div>
+
+<style>
+    input::placeholder{
+        color: grey;
+    }
+</style>
+

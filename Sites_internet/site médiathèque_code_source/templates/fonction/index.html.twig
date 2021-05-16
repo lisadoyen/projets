@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Listes des Fonctions</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for fonction in fonctions %}
+            <tr>
+                <td>{{ fonction.id }}</td>
+                <td>{{ fonction.libelle }}</td>
+                <td>
+                    <a href="{{ path('fonction_show', {'id': fonction.id}) }}" class="edit-btn btn-responsive-global">Détails</a>
+                    <a href="{{ path('fonction_edit', {'id': fonction.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">pas de fonction dans la base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fonction_new') }}" class="edit-btn btn-responsive-global">Nouvelle fonction</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

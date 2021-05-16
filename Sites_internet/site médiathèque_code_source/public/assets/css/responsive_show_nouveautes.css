@@ -1,0 +1,34 @@
+/* PAGE SHOW NOUVEAUTE */
+
+/* TELEPHONE */
+/* Nokia 8110 4G */
+/* Portrait and Landscape */
+@media screen
+and (min-device-width: 240px)
+and (max-device-width: 320px) {
+    .img-nouveaute-no{
+        width: 300px;
+        height: 300px;
+    }
+
+    .img-nouveaute{
+        width:300px;
+        height: 360px;
+    }
+}
+
+/* téléphone standard */
+@media screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+    .img-nouveaute-no{
+        width: 300px;
+        height: 300px;
+    }
+
+    .img-nouveaute{
+        width:300px;
+        height: 360px;
+    }
+}

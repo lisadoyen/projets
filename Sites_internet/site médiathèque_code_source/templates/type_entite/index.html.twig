@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">les TypeEntite</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for type_entite in type_entites %}
+            <tr>
+                <td>{{ type_entite.id }}</td>
+                <td>{{ type_entite.libelle }}</td>
+                <td>
+                    <a href="{{ path('type_entite_show', {'id': type_entite.id}) }}" class="edit-btn btn-responsive-global">Détails</a>
+                    <a href="{{ path('type_entite_edit', {'id': type_entite.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">pas de typeEntite trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_entite_new') }}" class="edit-btn btn-responsive-global ml-0">Ajouter</a>
+
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

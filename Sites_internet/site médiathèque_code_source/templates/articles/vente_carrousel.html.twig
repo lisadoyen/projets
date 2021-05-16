@@ -1,0 +1,64 @@
+<div class="col-sm ">
+    <h3 class="carousel-title">Articles à vendre</h3>
+    <div id="eBraderieCarousel" class="carousel slide h-100 w-100 d-inline-block" data-ride="carousel" data-interval="0">
+
+        <ol class="carousel-indicators">
+            <li data-target="#eBraderieCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#eBraderieCarousel" data-slide-to="1"></li>
+            <li data-target="#eBraderieCarousel" data-slide-to="2"></li>
+            <li data-target="#eBraderieCarousel" data-slide-to="3"></li>
+            <li data-target="#eBraderieCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="h-100 w-100 d-inline-block">
+                            <h2 class="text-center mb-4 titre-nouv" style="color: #25737d">{{ vente[0].titre | capitalize}}</h2>
+                            {% if vente[0].vignette == NULL %}
+                                <input type="hidden" name="id" value="{{ vente[0].id }}">
+                                <a href="{{ path('article_details', {id: vente[0].id}) }}">
+                                    <img class="photo-nouveaute" src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image"></a>
+                            {% else %}
+                                <input type="hidden" name="id" value="{{ vente[0].id }}">
+                                <a href="{{ path('article_details', {id: vente[0].id}) }}">
+                                    <img class="photo-nouveaute" src="{{ vente[0].vignette }}" alt="{{ vente[0].vignette }}"></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for vendable in vente | slice(1, 4) %}
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="h-100 w-100 d-inline-block">
+                                <h2 class="text-center mb-4" style="color: #25737d">{{ vendable.titre | capitalize}}</h2>
+                                {% if vendable.vignette == NULL %}
+                                    <input type="hidden" name="id" value="{{ vendable.id }}">
+                                    <a href="{{ path('article_details', {id: vendable.id}) }}">
+                                        <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" width="auto" height="500"></a>
+                                {% else %}
+                                    <input type="hidden" name="id" value="{{ vendable.id }}">
+                                    <a href="{{ path('article_details', {id: vendable.id}) }}">
+                                        <img src="{{ vendable.vignette }}" alt="{{ vendable.vignette }}" width="auto" height="500"></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm text-center m-3">
+            <a href="{{ path('vente') }}" class="edit-btn">Voir la liste des achats disponibles</a>
+        </div>
+        <a class="carousel-control-prev" href="#eBraderieCarousel" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#eBraderieCarousel" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Suivi de votre panier</title>
+</head>
+
+<body>
+
+<h1>Suivi de votre panier</h1><hr>
+{% if statut =="en attente" %}
+"{{ enregistrement.article.titre }}" que vous voulez {{ enregistrement.typeEnregistrement.libelle }}er est en attente, vous receverez un mail quand il sera prêt pour le retrait.
+{% elseif statut =="pret" %}
+"{{ enregistrement.article.titre }}" que vous voulez {{ enregistrement.typeEnregistrement.libelle }}er est prêt, vous pouvez aller le retirer auprès d'un bénévole.
+{% elseif statut =="perdu" %}
+"{{ enregistrement.article.titre }}" que vous voulez {{ enregistrement.typeEnregistrement.libelle }}er à été perdu, désolé pour le désagrément...
+{% elseif statut =="telecharge" %}
+"{{ enregistrement.article.titre }}" que vous voulez {{ enregistrement.typeEnregistrement.libelle }}er à été téléchargé.
+{% elseif statut =="emprunte" %}
+Confirmation : Vous venez d'emprunter "{{ enregistrement.article.titre }}".
+{% elseif statut =="achete" %}
+Confirmation : Vous venez d'acheter "{{ enregistrement.article.titre }}". Merci de votre achat.
+{% elseif statut =="rendu" %}
+Confirmation : Vous avez bien rendu l'article suivant "{{ enregistrement.article.titre }}".
+{% endif %}
+</body>
+</html>
+

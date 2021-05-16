@@ -1,0 +1,74 @@
+<nav class="main-menu">
+    <a href="{{ path('accueil') }}" data-toggle="tooltip" data-placement="bottom" title="Accueil">
+        <img src="{{asset('assets/images/logo/logo_site_accueil.png')}}" class="home" alt="Accueil">
+    </a>
+    <img src="{{asset('assets/images/logo/logo_site_titre.png')}}" class="titre-nav" alt="Médiathèque">
+    {% if app.request.pathInfo != '/accueil' %}
+    <form action="{{ path('articles_show') }}" id="search" method="post" class="search-in-nav">
+        {% include '_search_bar.html.twig' %}
+    </form>
+    {% endif %}
+    <a href="{{ path('panier') }}" data-toggle="tooltip" data-placement="bottom" title="Panier"><img src="{{asset('assets/images/yellow/shopping-cart.png')}}" class="icon shopCar" alt="Panier"></a>
+    {% for notif in app.flashes('notif-panier') %}
+        <span class="notif-panier transition">{{ notif }}</span>
+    {% endfor %}
+    <a href="{{ path('favoris') }}" data-toggle="tooltip" data-placement="bottom" title="Favoris"><img src="{{asset('assets/images/yellow/star.png')}}" class="icon fav" alt="Favories"></a>
+    {% for notif in app.flashes('notif-favoris') %}
+        <span class="notif-fav transition">{{ notif }}</span>
+    {% endfor %}
+    <a href="{{ path('profil') }}" data-toggle="tooltip" data-placement="bottom" title="Profil"><img src="{{asset('assets/images/yellow/user.png')}}" class="icon account" alt="Profile"></a>
+    <a href="{{ path('security_logout') }}" data-toggle="tooltip" data-placement="bottom" title="Déconnexion"><img src="{{asset('assets/images/yellow/logout.png')}}" class="icon  logout" alt="Déconnexion"></a>
+</nav>
+<nav class="sub-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm sub-dropdown container">
+                <a href="{{ path('articles_idCategorie', {idCategorie : 1}) }}" class="media-item dropbtn">Livres</a>
+                {{ render(controller('App\\Controller\\GenreController::getLivreGenres')) }}
+            </div>
+            <div class="col-sm sub-dropdown container" >
+                <a href="{{ path('articles_idCategorie',  {idCategorie : 2}) }}" class="media-item dropbtn">Videos</a>
+                {{ render(controller('App\\Controller\\GenreController::getVideoGenres')) }}
+            </div>
+            <div class="col-sm sub-dropdown container">
+                <a href="{{ path('articles_idCategorie',  {idCategorie : 4}) }}" class="media-item dropbtn">Musiques</a>
+                {{ render(controller('App\\Controller\\GenreController::getMusiqueGenres')) }}
+            </div>
+            <div class="col-sm sub-dropdown container">
+                <a href="{{ path('articles_idCategorie',  {idCategorie : 3}) }}" class="media-item dropbtn">Jeux</a>
+                {{ render(controller('App\\Controller\\GenreController::getJeuGenres')) }}
+            </div>
+        </div>
+    </div>
+</nav>
+{% if (is_granted('ROLE_ADMIN')) or (is_granted('ROLE_BENEVOLE'))  %}
+    <input id="burger" type="checkbox"/>
+    <label for="burger">
+        <span class="barre"></span>
+        <span class="barre"></span>
+        <span class="barre"></span> 
+    </label>
+    <nav id="lateral-menu">
+        <ul id="lateral-menu">
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('admin_statistiques')}}">Éditer les statistiques</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('gestion_actif_emprunts') }}">Gestion des emprunts/retours</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('gestion_actif_commande') }}">Gestion des commandes</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('annonce_index') }}">Gestion des annonces</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('operations_articles') }}">Opérations sur les articles</a></li>
+            {% if is_granted('ROLE_BENEVOLE') and not is_granted('ROLE_ADMIN')%}
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('data_base_articles') }}">Export de la base de données des articles</a></li>{% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('data_base_articles') }}">Import/Export de la base de données des articles</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('users_accueil') }}">Opérations sur les adhérents</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('data_base_users') }}">Import/Export de la base de donnée des adhérents</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('categorie_index') }}">Définir les paramètres et les règles d'emprunts</a></li>
+                <li class="lateral-menu"><a class="lateral-menu" href="{{ path('crud_list') }}">Maintenance du site</a></li>{% endif %}
+        </ul>
+    </nav>
+{% endif %}
+{% if app.request.pathInfo != '/accueil' %}
+    <form action="{{ path('articles_show') }}" id="search" method="post" class="search-in-nav-responsive">
+        {% include '_search_bar.html.twig' %}
+    </form>
+{% endif %}
+

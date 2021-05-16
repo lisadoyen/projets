@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Lien</h1>
+
+    <table class="table table-responsive">
+        <tbody class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <td>{{ lien.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ lien.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('lien_index') }}" class="edit-btn btn-responsive-global">Liste des liens</a>
+    <a href="{{ path('lien_edit', {'id': lien.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {{ include('lien/_delete_form.html.twig') }}
+</div>
+{% endblock %}

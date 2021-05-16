@@ -1,0 +1,47 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+    <h1 class="titre-responsive">Liste des articles à vendre</h1><br>
+
+        {% if vente is not empty %}
+            <div class="row mb-5">
+                <table class="table table-responsive">
+                    <thead  class="text-show-responsive-detail">
+                    <tr>
+                        <th scope="col">Vignette</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Consulter</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-show-responsive-detail">
+                    {% for vendable in vente %}
+                        <tr>
+                            <td>
+                                {%  if vendable.vignette is not empty %}
+                                    <img src="{{ vendable.vignette }}" alt="image de {{ vendable.titre }}" class="img-nouveaute">
+                                {% else %}
+                                    <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-nouveaute-no">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ vendable.titre | capitalize }}
+                            </td>
+                            <td class="col-3">
+                                <a href="{{ path('article_details', {id: vendable.id}) }}" class="btn edit-btn btn-responsive-global">Voir plus de détails</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="col-sm m-2">
+                <b>Aucune article à vendre trouvée</b>
+            </div>
+        {% endif %}
+        <hr class="mb-5">
+        <div class="pagination">
+            {{ knp_pagination_render(vente)}}
+        </div>
+    </div>
+{% endblock %}

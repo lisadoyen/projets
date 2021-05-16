@@ -1,0 +1,136 @@
+<?php //%255BApp%255CEntity%255CGenre%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Genre',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Genre',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\GenreRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'libelle' => [
+                        'fieldName' => 'libelle',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 20,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'libelle',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'genre',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'rurbiques' => [
+                        'fieldName' => 'rurbiques',
+                        'mappedBy' => 'genre',
+                        'targetEntity' => 'App\\Entity\\Rubrique',
+                        'cascade' => [],
+                        'orphanRemoval' => true,
+                        'fetch' => 2,
+                        'type' => 4,
+                        'inversedBy' => null,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\Genre',
+                        'isCascadeRemove' => true,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                    'categories' => [
+                        'fieldName' => 'categories',
+                        'joinTable' => [],
+                        'targetEntity' => 'App\\Entity\\Categorie',
+                        'mappedBy' => 'genres',
+                        'inversedBy' => null,
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 8,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\Genre',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                    'articles' => [
+                        'fieldName' => 'articles',
+                        'mappedBy' => 'genre',
+                        'targetEntity' => 'App\\Entity\\Article',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 4,
+                        'inversedBy' => null,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\Genre',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Rechercher un article</h1>
+        {{ form_start(form, { 'attr': { 'class' : 'form-maintenance-responsive' }} ) }}
+        {{ form_row(form.type,  { 'attr': { 'class' : 'form-maintenance-responsive' }}) }}
+        {{ form_row(form.value,  { 'attr': { 'class' : 'form-maintenance-responsive' }}) }}
+        <button class="edit-btn btn-responsive-global">{{ button_label|default('Chercher') }}</button>
+        {{ form_end(form) }}
+        <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+    </div>
+{% endblock %}

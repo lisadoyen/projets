@@ -1,0 +1,22 @@
+{% if article.categorie.libelle == 'video' %}
+    <span class="text-orange">réalisateur : </span>
+{% elseif article.categorie.libelle == 'livre' %}
+    <span class="text-orange">auteur : </span>
+{% elseif article.categorie.libelle == 'jeux' %}
+    <span class="text-orange">éditeur : </span>
+{% elseif article.categorie.libelle == 'musique' %}
+    <span class="text-orange">artiste : </span>
+{% endif %}
+
+<!-- changer quand on aura une liste des entités par article, pour l'instant il n'y a qu'une entité par article -->
+{% if article.entites is not defined %}
+    inconnu
+{% elseif article.entites is empty %}
+    inconnu
+{% else %}
+    {% if premierEntite[article.id] is defined %}
+        {% for entite in premierEntite[article.id] %}
+            {{ entite | capitalize }}
+        {% endfor %}
+    {% endif %}
+{% endif %}

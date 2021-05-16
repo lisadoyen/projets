@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Liste des rubrique</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Categories</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for rubrique in rubriques %}
+            <tr>
+                <td>{{ rubrique.id }}</td>
+                <td>{{ rubrique.libelle }}</td>
+                <td>
+                    {% for cat in rubrique.categories %}
+                        <span class="alert-info rounded p-1">{{ cat.libelle }}</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('rubrique_show', {'id': rubrique.id}) }}" class="edit-btn btn-responsive-global">Details</a>
+                    <a href="{{ path('rubrique_edit', {'id': rubrique.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">pas de rubriques dans la base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rubrique_new') }}" class="edit-btn btn-responsive-global">Nouvelle rubrique</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

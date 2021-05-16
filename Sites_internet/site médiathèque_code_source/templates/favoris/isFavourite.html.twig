@@ -1,0 +1,10 @@
+{% if favoris is empty %}
+    <a href="{{ path('add_article_favoris', {id: article.id, page:"detail"}) }}" class="star">
+        <i class="far fa-star text-danger fa-5x star-pleine etoile"></i>
+        <i class="fas fa-star text-danger fa-5x star-nonpleine etoile"></i>
+    </a>
+{% else %}
+    <a href="{{ path('remove_article_favoris', {id: article.id, page:"detail"}) }}">
+        <i class="fas fa-star text-danger fa-5x etoile"></i>
+    </a>
+{% endif %}

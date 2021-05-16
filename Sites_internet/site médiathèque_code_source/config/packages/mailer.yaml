@@ -1,0 +1,12 @@
+framework:
+    mailer:
+        transports:
+            main: '%env(MAILER_TEST)%'
+            livre: '%env(MAILER_TEST)%'
+            musique: '%env(MAILER_TEST)%'
+            jeu: '%env(MAILER_TEST)%'
+            video: '%env(MAILER_TEST)%'
+            #livre: '%env(MAILER_LIVRE)%'
+            #musique: '%env(MAILER_MUSIQUE)%'
+            #jeu: '%env(MAILER_JEU)%'
+            #video: '%env(MAILER_VIDEO)%'

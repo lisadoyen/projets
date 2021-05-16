@@ -1,0 +1,28 @@
+{% extends "layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/datepicker.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container cadre">
+        <div class="row">
+            <div class="col">
+                <h1 class="titre-responsive">Modifier l'article</h1>
+            </div>
+            <div class="col">
+                {{ include('article/_delete_form.html.twig') }}
+            </div>
+        </div>
+
+        <div class="text-show-responsive-detail">
+            {{ include('article/_form.html.twig', {'button_label': 'Modifier l\'article'}) }}
+        </div>
+
+        <a href="{{ path('article_search') }}" class="edit-btn btn-responsive-global">revenir a la recherche</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<title>Entite</title>
+
+{% block body %}
+    <h1>Entite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entite.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entite.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('entite_index') }}">back to list</a>
+
+    <a href="{{ path('entite_edit', {'id': entite.id}) }}">edit</a>
+
+    {{ include('entite/_delete_form.html.twig') }}
+{% endblock %}

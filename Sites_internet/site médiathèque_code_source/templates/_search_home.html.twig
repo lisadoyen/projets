@@ -1,0 +1,7 @@
+<div style="height: 60.5vh;padding-top:0px; background:linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('assets/images/bg.jpg') }}')">
+    <div class="d-flex justify-content-center h-100">
+        <form action="{{ path('articles_show') }}" id="search" method="post" style="margin-top: 25.75vh;">
+            {% include '_search_bar.html.twig' %}
+        </form>
+    </div>
+</div>

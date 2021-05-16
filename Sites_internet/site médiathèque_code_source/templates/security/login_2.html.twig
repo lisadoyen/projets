@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive_connexion.css') }}" >
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main-menu.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive_accueil.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pagination.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/page.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/footer.css?<php echo("time") ?>') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="login-content">
+                    <form action="{{ path('security_login') }}" method="post">
+                        {% if error %}
+                            <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <h2>Bienvenue</h2>
+                        <div class="input-div one">
+                            <div class="i">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="div">
+                                <h5>Utilisateur</h5>
+                                <input type="text" class="input" required name="_username">
+                            </div>
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="div">
+                                <h5>Mot de passe</h5>
+                                <input type="password" class="input" required name="_password">
+                            </div>
+                        </div>
+                        <a class="mdp-oublie" href="#">Mot de passe oublié ?</a>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <input type="submit" class="edit-btn" value="Connexion">
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 logo">
+                <img class="img-logo" src="{{ asset('assets/images/logo/logo_mediatheque.png') }}" alt="logo">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ asset('assets/js/login.js') }}"></script>
+</body>
+{% include "_footer.html.twig" %}
+</html>

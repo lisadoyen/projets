@@ -1,0 +1,11 @@
+-- ADMIN
+identifiant : admin
+mp : adminadmin
+
+-- BENEVOLE
+identifiant : benevole
+mp : benevole
+
+-- Adherent
+identifiant : adherent
+mp : adherent

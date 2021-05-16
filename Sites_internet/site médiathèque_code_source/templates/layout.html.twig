@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Médiathèque Thales - Brest</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" >
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/carousel.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/nav-search.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/pagination.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/page.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/list-article.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/list-article.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/detail-article.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/filtre.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/lire-plus.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/annonce.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/profil.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/nouveaute.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/etoile.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_accueil.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_show_articles.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_detail_articles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_show_annonces.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_show_nouveautes.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_maintenance.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_profil.css?<php echo("time") ?>') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/responsive_global.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/main-menu.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/test.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
+{#        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>#}
+    {% endblock %}
+</head>
+<body>
+{% include "_nav.html.twig" %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('add_livre_isbn') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('assets/js/popper.min.js') }}" ></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}" ></script>
+    <script src="{{ asset('assets/js/visibility.js') }}" ></script>
+    <script src="{{ asset('assets/js/chart.js') }}" ></script>
+    <script src="{{ asset('assets/js/lire-plus.js') }}"></script>
+    <script src="{{ asset('assets/js/affichage.js') }}"></script>
+    <script src="{{ asset('assets/js/visible_genre.js') }}"></script>
+    <script src="{{ asset('assets/js/etoile.js') }}"></script>
+
+{% endblock %}
+</body>
+{% include "_footer.html.twig" %}
+
+{% block charts %}
+{% endblock %}
+</html>
+

@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Modification du profil</h1><hr>
+        {{ form_start(form, {'attr': { 'class' : 'form-maintenance-responsive' }}) }}
+            {{ form_row(form.username, {'label' : 'Identifiant '}) }}<br>
+            {{ form_row(form.email_recup, {'label' : 'Email Récupération '}) }}<br>
+            {{ form_row(form.email_perso, {'label' : 'Email personnel '}) }}<br>
+            {{ form_row(form.tel_perso, {'label' : 'Téléphone personnel principal'}) }}<br>
+            {{ form_row(form.tel_perso2, {'label' : 'Téléphone personnel secondaire '}) }}<br>
+            {{ form_row(form.email_pro, {'label' : 'Email professionnel '}) }}<br>
+            {{ form_row(form.tel_pro, {'label' : 'Téléphone professionnel principal'}) }}<br>
+            {{ form_row(form.tel_pro2, {'label' : 'Téléphone professionnel secondaire'}) }}<br>
+            {{ form_row(form.notification_perso, {'label' : 'Notification Personnel'}) }}<br>
+            {{ form_row(form.notification_pro, {'label' : 'Notification professionnel'}) }}<br>
+            {{form_row(form.adresse_rue, {'label' : 'Rue'}) }}<br>
+            {{form_row(form.adresse_rue_complement, {'label' : 'Compléments'}) }}<br>
+            {{form_row(form.ville, {'label' : 'Ville'}) }}<br>
+            {{form_row(form.code_postal, {'label' : 'Code postale'}) }}<br>
+            {{form_row(form.commentaire_utilisateur , {'label' : 'Commentaire Utilisateur'}) }}<br>
+            <hr>
+            <div class="row">
+                <div class="col-sm">
+                    <a href="{{path('profil')}}" class="edit-btn btn-responsive-global" onclick="return confirm('Voulez-vous vraiment quitter ? Toutes les informations non sauvegardées seront perdues.')">Annuler</a>
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="edit-btn btn-responsive-global" onclick="return confirm('Voulez-vous vraiment valider ces informations ?')">Valider</button>
+                </div>
+            </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

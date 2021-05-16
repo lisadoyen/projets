@@ -1,0 +1,228 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container cadre">
+        <div class="row">
+            <div class="col-sm">
+                <a href="{{ path('emprunts_actif') }}" class="edit-btn float-left">Voir les emprunts / achat en cours</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('emprunts_historique') }}" class="edit-btn float-right">Voir l'historique des activités</a>
+            </div>
+        </div><hr>
+
+        <div class="row">
+            <div class="col-sm">
+                <button type="button" class="btn" data-toggle="modal" data-target="#imgProfil" data-toggle="tooltip" data-placement="bottom" title="Changer l'avatar">
+                    {% if app.user.avatar is not null %}
+                        <img class="img-profil" src="{{asset('assets/images/account/')}}{{app.user.avatar}}" alt="Image {{app.user.avatar}}" >
+                    {% else %}
+                        <img class="img-profil" src="{{asset('assets/images/account/account_yellow.png')}}" alt="Aucun avatar">
+                    {% endif %}
+                </button>
+            </div>
+            <div class="col-sm">
+                <h1 class="text-title-filtre-responsive">Votre profil</h1>
+            </div>
+        </div><hr>
+
+        <div class="modal fade" id="imgProfil" tabindex="-1" role="dialog" aria-labelledby="imgProfilTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title titre-responsive" id="exampleModalLongTitle">Changer l'avatar</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row text-responsive">
+                                <div class="col-sm">
+                                    <a href="{{ path('edit_color_avatar_profil', {color:"dark"}) }}" class="btn" style="{% if app.user.avatar == "account_dark.png" %} border: 1px solid lightgray {% endif %}" data-target="#imgProfil" data-toggle="tooltip" data-placement="bottom" title="Changer l'avatar">
+                                        <img class="img-profil" src="{{asset('assets/images/account/account_dark.png')}}" alt="Aucun avatar">
+                                    </a>
+                                </div>
+                                <div class="col-sm">
+                                    <a href="{{ path('edit_color_avatar_profil', {color:"blue"}) }}" class="btn" style="{% if app.user.avatar == "account_blue.png" %} border: 1px solid lightgray {% endif %}"  data-target="#imgProfil" data-toggle="tooltip" data-placement="bottom" title="Changer l'avatar">
+                                        <img class="img-profil" src="{{asset('assets/images/account/account_blue.png')}}" alt="Aucun avatar">
+                                    </a>
+                                </div>
+                                <div class="col-sm">
+                                    <a href="{{ path('edit_color_avatar_profil', {color:"green"}) }}" class="btn" style="{% if app.user.avatar == "account_green.png" %} border: 1px solid lightgray {% endif %}" data-target="#imgProfil" data-toggle="tooltip" data-placement="bottom" title="Changer l'avatar">
+                                        <img class="img-profil" src="{{asset('assets/images/account/account_green.png')}}" alt="Aucun avatar">
+                                    </a>
+                                </div>
+                                <div class="col-sm">
+                                    <a href="{{ path('edit_color_avatar_profil', {color:"red"}) }}" class="btn" style="{% if app.user.avatar == "account_red.png" %} border: 1px solid lightgray {% endif %}" data-target="#imgProfil" data-toggle="tooltip" data-placement="bottom" title="Changer l'avatar">
+                                        <img class="img-profil" src="{{asset('assets/images/account/account_red.png')}}" alt="Aucun avatar">
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                            {{ form_start(form, {'attr': { 'class' : 'form-maintenance-responsive' }}) }}
+                            <h3>Importer une image depuis votre ordinateur :</h3><br>
+                            <div class="row">
+                                {% if app.user.avatar != "account_dark.png" and app.user.avatar != "account_blue.png" and app.user.avatar != "account_green.png" and app.user.avatar != "account_red.png" and app.user.avatar != "account_yellow.png" %}
+                                    <div class="col-2">
+                                        <img class="img-profil" src="{{asset('assets/images/account/')}}{{app.user.avatar}}" alt="Image {{app.user.avatar}}" >
+                                    </div>
+                                {% endif %}
+                                <div class="col-6 col-responsive-profil">
+                                    {{ form_row(form.avatar, {'label' : 'Choisir un ficher'}) }}
+                                </div>
+                                <div class="col-4">
+                                    <button type="submit" class="edit-btn btn-responsive-global" style="margin-top: 1.4em;">Choisir cette image</button>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ path('edit_color_avatar_profil', {color:"yellow"}) }}" class="btn btn-secondary btn-responsive-global">Rétablir l'avatar par défaut</a>
+                        <button type="button" class="btn btn-danger btn-responsive-global" data-dismiss="modal">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Matricule :
+            </div>
+            <div class="col-sm">
+                {{  app.user.matricule  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Identifiant :
+            </div>
+            <div class="col-sm">
+                {{  app.user.username  }}
+            </div>
+        </div><hr>
+
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Prenom :
+            </div>
+            <div class="col-sm">
+                {{  app.user.prenom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Nom :
+            </div>
+            <div class="col-sm">
+                {{  app.user.nom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Entreprise :
+            </div>
+            <div class="col-sm">
+                {{  app.user.entreprise.nom  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Fonction :
+            </div>
+            <div class="col-sm">
+                {{  app.user.fonction.libelle  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Email de récupération:
+            </div>
+            <div class="col-sm">
+                {{  app.user.emailRecup  }}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Droit Emprunt :
+            </div>
+            <div class="col-sm ">
+                {% if app.user.droitEmprunt == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+            <div class="col-sm border-left">
+                Droit d'achat :
+            </div>
+            <div class="col-sm ">
+                {% if app.user.droitAchat == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+        </div><hr>
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Notification personnel :
+            </div>
+            <div class="col-sm">
+                {% if app.user.notificationPerso == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+            <div class="col-sm border-left">
+                Notification professionnel :
+            </div>
+            <div class="col-sm">
+                {% if app.user.notificationPro == 1 %}
+                    <span class="text-success">Oui</span>
+                {% else %}
+                    <span class="text-danger">Non</span>
+                {% endif %}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Date de création :
+            </div>
+            <div class="col-sm">
+                {{  app.user.dateCreation | date('d/m/Y')}}
+            </div>
+        </div><hr>
+
+        <div class="row text-responsive">
+            <div class="col-sm">
+                Date de modification :
+            </div>
+            <div class="col-sm">
+                {{  app.user.dateModification | date('d/m/Y')}}
+            </div>
+        </div><hr>
+
+        <div class="row">
+            <div class="col-sm">
+                <a href="{{path('mes_donnees')}}" class="edit-btn float-left">Mes données personnelles</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{path('edit_password_profil')}}" class="edit-btn float-center">Modifier mon mot de passe</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{path('edit_profil')}}" class="edit-btn float-right">Modifier les paramètres secondaire</a>
+            </div>
+        </div><hr>
+    </div>
+{% endblock %}

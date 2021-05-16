@@ -1,0 +1,12 @@
+{% if article.favoris is empty %}
+    <a href="{{ path('add_article_favoris', {id: article.id, page: "list"}) }}"><i class="far fa-star text-danger fa-2x etoile"></i></a>
+{% else %}
+    <a href="{{ path('remove_article_favoris', {id: article.id, page: "list"}) }}"><i class="fas fa-star text-danger fa-2x etoile"></i></a>
+{% endif %}
+{% if article.id in panierUser %}
+    <img class="kadis-bleu" src="{{asset('assets/images/blue/shopping-cart.png')}}" alt="kadis bleu">
+{% endif %}
+{% if enregistrements[article.id] is defined %}
+    <img class="rounded-circle rond-vert" src="{{asset('assets/images/article/rond_vert.png')}}"  data-toggle="tooltip"
+         data-placement="bottom" title="dernier emprunt le {{ enregistrements[article.id] | date("d/m/Y") }} à {{ enregistrements[article.id] | date("H:m:s") }}">
+{% endif %}

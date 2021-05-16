@@ -1,0 +1,13 @@
+<div class="p-2 align-text-bottom text-responsive-detail">
+    <span class="text-orange">
+        total :
+    </span>
+    <span class="text-bold">
+        {{ total }}
+    </span>
+    {% if total == 0 or total == 1 %}
+    commentaire
+    {% else %}
+    commentaires
+    {% endif %}
+</div>

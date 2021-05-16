@@ -1,0 +1,94 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <form id="search" action="POST" class="content-mobile">
+        <div class="searchbar" style="margin-top: 2rem">
+            <input class="search_input" type="text" name="" placeholder="Search...">
+            <a href="#" class="search_icon" onclick="this.closest('form').submit();return false;"><i class="fas fa-search"></i></a>
+        </div>
+    </form>
+    <div class="container-fluid">
+        <h1 style="text-align: center">Récapitulatifs des livres {{ genre.libelleGenre }}</h1><br>
+        {% if is_granted('ROLE_BENEVOLE') %}
+            <div class="row">
+                <a href="{{ path('get_ISBN') }}" class="edit-btn">Ajouter un livre</a>
+            </div>
+        {% endif %}
+        <div>
+            <table class="table table-striped table-bordered">
+                <caption>Récapitulatifs des livres {{ genre.libelleGenre }}</caption>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Code Livre</th>
+                    <th>Code ISBN</th>
+                    <th>Titre / Designation</th>
+                    <th>Description</th>
+                    <th>Photo</th>
+                    <th>Format</th>
+                    <th>Typologie</th>
+                    <th>Disponible</th>
+                    <th>Inactif</th>
+                    <th>Nb sortie</th>
+                    <th>Lien</th>
+                    <!--
+                    <th>Date de retrait</th>
+                    <th>Date achat</th>
+                    <th>Date de création</th>
+                    <th>Nom auteur</th>
+                    <th>Prenom auteur</th>
+                    <th>Libelle genre</th>
+                    <th>Opérations</th>
+                    -->
+
+                </tr>
+                </thead>
+                <tbody>
+                {% if livres is not empty %}
+                    {% for livre in livres %}
+                        <tr>
+                            <td>{{livre.codeLivre}}</td>
+                            <td>{{livre.codeISBN}}</td>
+                            <td>{{livre.titreDesignation}}</td>
+                            <td>{{livre.descriptionArticle}}</td>
+                            <td>{{livre.photo}}</td>
+                            <td>{{livre.format}}</td>
+                            <td>{{livre.typologie}}</td>
+                            <td>
+                                {% if livre.disponible == 0 %}
+                                    <span style="color:red">Non</span>
+                                {% else %}
+                                    <span style="color:green">Oui</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if livre.inactif == 0 %}
+                                    <span style="color:red">Non</span>
+                                {% else %}
+                                    <span style="color:green">Oui</span>
+                                {% endif %}
+                            </td>
+                            <td>{{livre.nombreDeSorties}}</td>
+                            <td>{{livre.Lien}}</td>
+                            <!--
+                            <td>{{livre.dateDeRetrait | date('d/m/Y')}}</td>
+                            <td>{{livre.dateAchat | date('d/m/Y')}}</td>
+                            <td>{{livre.dateCreation | date('d/m/Y')}}</td>
+                            <td>{{livre.fkIdAuteur.nom}}</td>
+                            <td>{{livre.fkIdAuteur.prenom}}</td>
+                            <td>{{livre.fkIdGenre.libelleGenre}}</td>
+                            <td>
+                                <a href="{#{ path('livre_reverve', {id: livre.id}) }#}" class="btn btn-primary">Réserver</a>
+                            </td>
+                            -->
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr class="table-warning"><td>Pas de livre</td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                {{ knp_pagination_render(livres)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

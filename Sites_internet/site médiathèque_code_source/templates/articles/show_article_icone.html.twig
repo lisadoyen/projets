@@ -1,0 +1,47 @@
+<div class="row">
+    {% if articles is defined %}
+        {% for article in articles | slice(0, 30) %}
+            <div  class="col-lg-4 pt-4 pb-4 float-left article-responsive-icone">
+                <div class="pl-2">
+                    {% include 'articles/show_elements_articles/show_nouveau.html.twig' %}
+                </div>
+                <div class="row p-2">
+                    <div class="col-lg-4 article-img-responsive-icone">
+                        {% if article.vignette == NULL %}
+                            <input type="hidden" name="id" value="{{ article.id }}">
+                            <a href="{{ path('article_details', {id: article.id}) }}">
+                                <img class="img-icone-no" src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image"></a>
+                        {% else %}
+                            <input type="hidden" name="id" value="{{ article.id }}">
+                            <a href="{{ path('article_details', {id: article.id}) }}">
+                                <img class="img-icone" src="{{ article.vignette }}" alt="{{ article.vignette }}" ></a>
+                        {% endif %}
+                        <div class="pt-4 pl-2">
+                            <div class="row">
+                                {% include 'articles/show_elements_articles/show_button.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 article-info-responsive-icone">
+                        <div class="text-size-title"><span class="text-bold">{{article.titre | capitalize }}</span></div>
+                        <div class="text-size pt-2">
+                            {% include 'articles/show_elements_articles/show_entite.html.twig' %}
+                        </div>
+                        <div class="text-size pt-1"><span class="text-orange">date de publication : </span>{{article.datePublication is empty ? "inconnu" : article.datePublication|date("d/m/Y")}}</div>
+                        <div class="text-size pt-3"><span class="text-orange">moyenne des avis : </span>
+                            {% include 'articles/show_elements_articles/show_moyenne.html.twig' %}
+                        </div>
+                        {%  if article.statut.libelle == "vendable" or article.statut.libelle == "reserve_achat" %}
+                            <hr>
+                            <div class="text-size"><span class="text-orange">prix : </span><span style="color: red">{{ article.montantVente }}€</span></div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-1"> <!-- pour tablette : p-4-->
+                        {% include 'articles/show_elements_articles/show_symbole.html.twig' %}
+                    </div>
+                </div>
+                <hr class="hr-responsive">
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

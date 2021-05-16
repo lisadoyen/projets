@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Règle d'emprunt par catégorie</h1><br>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Libellé</th>
+                <th>Durée Emprunt Max.</th>
+                <th>Durée Emprunt Max. (Nouveautés)</th>
+                <th>Nombre d'emprunt Max.</th>
+                <th>Nombre d'emprunt Max. (Nouveautés)</th>
+                <th>Durée d'une nouveauté</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.libelle|capitalize }}</td>
+                <td>{{ categorie.dureeEmpruntMax }}</td>
+                <td>{{ categorie.dureeEmpruntMaxNouveaute }}</td>
+                <td>{{ categorie.nbEmpruntMax }}</td>
+                <td>{{ categorie.nbEmpruntMaxNouveaute }}</td>
+                <td>{{ categorie.dureeNouveaute }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"  class="edit-btn btn-responsive-global">Détails</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune catégorie trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_new') }}" class="edit-btn btn-responsive-global ml-0">Ajouter une catégorie</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

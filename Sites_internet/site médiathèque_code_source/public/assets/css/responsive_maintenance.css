@@ -1,0 +1,66 @@
+
+/* téléphone standard */
+@media screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+    .container.cadre{
+        padding: 1.5em;
+    }
+
+    /*champs de saisi*/
+    .form-maintenance-responsive{
+        font-size: 2.3vh;
+        text-align: center;
+    }
+
+    .form-maintenance-responsive .form-check-input {
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-left: -3rem;
+    }
+
+    /* boutton ajouter et menu dans crud list */
+    a.btn-responsive-crud{
+        font-size: 2.5vh;
+    }
+
+    /* contenu des tableaux crud */
+    .text-show-responsive-detail{
+        font-size: 2.3vh;
+    }
+}
+
+/* TELEPHONE */
+/* Nokia 8110 4G */
+/* Portrait and Landscape */
+@media screen
+and (min-device-width: 240px)
+and (max-device-width: 320px) {
+
+    .container.cadre{
+        padding: 1.5em;
+    }
+
+    /*champs de saisi*/
+    .form-maintenance-responsive{
+        font-size: 2.3vh;
+        text-align: center;
+    }
+
+    .form-maintenance-responsive .form-check-input {
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-left: -3rem;
+    }
+
+    /* boutton ajouter et menu dans crud list */
+    a.btn-responsive-crud{
+        font-size: 2.5vh;
+    }
+
+    /* contenu des tableaux crud */
+    .text-show-responsive-detail{
+        font-size: 2.3vh;
+    }
+}

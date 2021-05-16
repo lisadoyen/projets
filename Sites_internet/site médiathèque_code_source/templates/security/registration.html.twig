@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inscription{% endblock %}
+{% block body %}
+<h1>Médiathèque Thales</h1>
+    <h2>Inscription</h2>
+
+    {{ form_start(form)}}
+    {{ form_row(form.name, {'label' : 'Nom ','attr':{'placeholder':'Entrer votre nom'}}) }}<br>
+    {{ form_row(form.firt_name, {'label' : 'Prenom ','attr':{'placeholder':'Entrer votre prenom'}}) }}<br>
+    {{ form_row(form.username, {'label' : 'Identifiant ','attr':{'placeholder':'Entrer votre identifiant'}}) }}<br>
+    {{ form_row(form.email, {'label' : 'Email ','attr':{'placeholder':'Entrer votre email'}}) }}<br>
+    {{form_row(form.phone, {'label' : 'Numéro de téléphone ','attr':{'placeholder':'Entrer votre numéro de téléphone'}}) }}<br>
+    {{ form_row(form.status, {'label' : 'Statut  ','attr':{'placeholder':'Entrer votre statut'}}) }}<br>
+    {{ form_row(form.password, {'label' : 'Mot de passe ','attr':{'placeholder':'Entrer votre mot de passe'}, 'type':'password'}) }}<br>
+    {{ form_row(form.confirm_password, {'label' :'Confirmer le Mot de passe ','attr':{'placeholder':'Confirmer votre mot de passe'}, 'type':'password'}) }}<br>
+    <button class="btn btn-outline-primary" type="submit" >Inscription</button>
+
+    {{ form_end(form) }}
+{% endblock %}

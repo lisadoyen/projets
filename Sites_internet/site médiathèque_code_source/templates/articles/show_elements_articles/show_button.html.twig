@@ -1,0 +1,25 @@
+<div class="col">
+    <input type="hidden" name="id" value="{{ article.id }}">
+    {%  if article.statut.libelle == "empruntable" %}
+        <a href="{{ path('add_article_panier',{id:article.id, page: "list"}) }}" class="style-button-article-emprunt">
+            Emprunter</a>
+    {% elseif article.statut.libelle == "vendable" %}
+        <a href="{{ path('add_article_panier',{id:article.id,  page: "list"}) }}" class="style-button-article-achat">
+            Acheter</a>
+    {% elseif article.statut.libelle == "emprunte" %}
+        <p class="style-button-article-emprunte">
+            Emprunté</p>
+    {% elseif article.statut.libelle == "reserve_achat" %}
+        <p  class="style-button-article-reserve_achat">
+            Réservation en cours</p>
+    {% elseif article.statut.libelle == "reserve_emprunt" %}
+        <p class="style-button-article-reserve_emprunt">
+            Réservation en cours</p>
+    {% endif %}
+</div>
+<div class="col">
+    {#edit si admin/benevole#}
+    {% if (is_granted('ROLE_ADMIN')) or (is_granted('ROLE_BENEVOLE'))  %}
+        <a href="{{ path('article_edit', {'id': article.id}) }}" class="edit-btn">Modifier</a>
+    {% endif %}
+</div>

@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Les Entités</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for entite in entites %}
+            <tr>
+                <td>{{ entite.id }}</td>
+                <td>{{ entite.nom }}</td>
+                <td>{{ entite.prenom }}</td>
+                <td>
+                    <!--<a href="{{ path('entite_show', {'id': entite.id}) }}">show</a>-->
+                    <a href="{{ path('entite_edit', {'id': entite.id}) }}" class="edit-btn btn-responsive-maintenance">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune entité trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('entite_new') }}"  class="edit-btn btn-responsive-maintenance ml-0">Ajouter une entité</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="titre-responsive">Créer une nouvelle entité</h1>
+
+    <div class="text-show-responsive-detail">
+        {{ include('entite/_form.html.twig') }}
+    </div>
+
+    <a class="edit-btn btn-responsive-maintenance" href="{{ path('entite_index') }}">Retourner à la liste</a>
+</div>
+{% endblock %}

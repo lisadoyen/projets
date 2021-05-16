@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    {% include "_search_home.html.twig" %}
+    <div class="container-carousel">
+
+        <div class="row">
+
+            <div class="col-sm ">
+                {% include 'annonce/annonces.html.twig' %}
+            </div>
+
+            {% include 'articles/nouveaute_carrousel.html.twig'  %}
+        </div>
+    </div>
+
+    <div class="separtor"></div>
+
+    <h2 class="carousel-title"><span>E-braderie</span></h2>
+
+    <div class="container-carousel">
+        <div class="row">
+            <div class="col-sm ">
+                <h3 class="carousel-title">Le Concept</h3>
+                <div class="carousel slide h-100 w-100 d-inline-block" data-ride="carousel" data-interval="0">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <p class="text-justify">
+                                        Le concept e-braderie est de proposer une braderie permanente en ligne des articles déclassés. Vous pouvez acheter les articles de votre choix en validant votre commande par le panier. Les articles seront préparés afin que vous puissiez venir les retirer sur place. Afin de pouvoir bénéficier de cette capacité, il faut être adhérent au CSE Thales Brest et que le prélèvement bancaire soit autorisé comme moyen de paiement. En effet, les bénévoles assurant les permanences n'ayant pas pour mission de manipuler de l'argent, le seul et unique moyen de paiement est le prélèvement bancaire. Lorsqu'une personne vient chercher sa commande d'articles achetés, il se verra remettre un double de la facture qui sera transmise au CSE. Une fois les articles remis en mains propres, il ne sera pas possible de les ramener.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% include 'articles/vente_carrousel.html.twig'  %}
+        </div>
+    </div>
+{% endblock %}
+

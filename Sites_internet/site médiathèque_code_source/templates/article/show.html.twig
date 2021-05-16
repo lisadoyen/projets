@@ -1,0 +1,65 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Article</h1>
+
+    <table class="table table-responsive">
+        <tbody class="text-responsive">
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Gencode</th>
+                <td>{{ article.gencode }}</td>
+            </tr>
+            <tr>
+                <th>CodeArticle</th>
+                <td>{{ article.codeArticle }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ article.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ article.description }}</td>
+            </tr>
+            <tr>
+                <th>Vignette</th>
+                <td>{{ article.vignette }}</td>
+            </tr>
+            <tr>
+                <th>DatePublication</th>
+                <td>{{ article.datePublication ? article.datePublication|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>MontantObtention</th>
+                <td>{{ article.montantObtention }}</td>
+            </tr>
+            <tr>
+                <th>MontantCaution</th>
+                <td>{{ article.montantCaution }}</td>
+            </tr>
+            <tr>
+                <th>MontantVente</th>
+                <td>{{ article.montantVente }}</td>
+            </tr>
+            <tr>
+                <th>Observation</th>
+                <td>{{ article.observation }}</td>
+            </tr>
+            <tr>
+                <th>Numerique</th>
+                <td>{{ article.numerique ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_index') }}" class="edit-btn btn-responsive-global">Revenir à la liste</a>
+
+    <a href="{{ path('article_edit', {'id': article.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+</div>
+{% endblock %}

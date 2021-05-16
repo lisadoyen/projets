@@ -1,0 +1,11 @@
+label.required:before {
+    color: red;
+    content: "*";
+}
+
+.entite-subform {
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: #eeeeee;
+}

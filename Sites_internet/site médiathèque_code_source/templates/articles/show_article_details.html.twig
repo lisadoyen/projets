@@ -1,0 +1,215 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row p-4">
+            {% if article is not empty %}
+            <div class="col-lg-3 float-left img-detail-responsive">
+                {%  if article.vignette is not empty %}
+                    <img src="{{ article.vignette }}" alt="image de {{ article.titre }}" class="vignette-responsive">
+                {% else %}
+                    <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="vignette-responsive-no">
+                {% endif %}
+            </div>
+            <div class="col-lg-6 text-description-responsive">
+                <div class="row">
+                    <div class="text-detail-size-title">
+                        <span class="text-orange"> titre : </span>
+                        <span class="text-bold">{{article.titre | capitalize }}</span>
+                    </div>
+                </div>
+                <div class="row pt-4 pb-4">
+                    <div class="col-lg-6">
+                        <div class="text-detail-size">
+                            {% if article.categorie.libelle == 'video' %}
+                                <span class="text-orange">réalisateur : </span>
+                            {% elseif article.categorie.libelle == 'livre' %}
+                                <span class="text-orange">auteur : </span>
+                            {% elseif article.categorie.libelle == 'jeux' %}
+                                <span class="text-orange">éditeur : </span>
+                            {% elseif article.categorie.libelle == 'musique' %}
+                                <span class="text-orange">artiste : </span>
+                            {% endif %}
+
+                            {% if premierEntite is defined and premierEntite is not null %}
+                                    {% if premierEntite.prenom is not null %}
+                                        {{ premierEntite.prenom | capitalize }}
+                                    {% endif %}
+                                    {% if premierEntite.nom is not null %}
+                                        {{ premierEntite.nom | capitalize }}
+                                    {% endif %}
+                            {% else %}
+                                inconnu
+                            {% endif %}
+                        </div>
+                        <div class="text-detail-size">
+                            <span class="text-orange">date de publication : </span>
+                            {{article.datePublication is empty ? "inconnu" : article.datePublication|date("d/m/Y")}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-detail-size">
+                            <span class="text-orange">genre : </span>
+                            {{article.genre.libelle}}
+                        </div>
+                        <div class="text-detail-size">
+                            <span class="text-orange">rubrique : </span>
+                            {% if article.rubriques[0].libelle is defined %}
+                                {{ article.rubriques[0].libelle }} <!-- mettre la liste quand plusieurs rubriques -->
+                            {% else %}
+                                aucune
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-justify text-detail-size">
+                        {% if article.categorie.libelle == 'video' %}
+                            <span class="text-orange">synopsis : </span>
+                        {% elseif article.categorie.libelle == 'livre' %}
+                            <span class="text-orange">résumé : </span>
+                        {% elseif article.categorie.libelle == 'jeux' %}
+                            <span class="text-orange">description : </span>
+                        {% elseif article.categorie.libelle == 'musique' %}
+                            <span class="text-orange">description : </span>
+                        {% endif %}
+                        <p class="readMore"> <!--changer description en article.description-->
+                            {% if article.description is not empty %}
+                                {{ article.description | raw }}
+                            {% else %}
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas risus turpis, cursus
+                                a aliquet non, lacinia eget nibh. Donec massa enim, placerat nec imperdiet ac, convallis
+                                et neque. Sed arcu turpis, facilisis at orci quis, mollis malesuada augue. Donec in
+                                nulla et turpis hendrerit sollicitudin et in elit. Vivamus fermentum erat purus, a
+                                fringilla arcu faucibus convallis. Vestibulum commodo eu mi vitae ultricies. Ut
+                                sollicitudin risus eget ipsum elementum hendrerit. Donec fringilla massa sodales
+                                erat suscipit, quis maximus enim tincidunt. Nam vehicula leo nec eros dictum malesuada.
+                                Suspendisse volutpat quam eget rhoncus porttitor.
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="row">
+                    <div class="row col-lg-4"></div>
+                    <div class="col-lg-8">
+                    {% if idNouveaute == article.id %}
+                        <span class="text-bold text-detail-size-nouveaute"> nouveau !</span>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="row p-4">
+                    <div class="row col-lg-5"></div>
+                    <div class="row col-lg-7">
+                        {{ render(controller('App\\Controller\\FavorisController::isFavourite',{ 'idArticle': article.id })) }}
+                        {% if article.id in panierUser %}
+                            <img src="{{asset('assets/images/blue/shopping-cart.png')}}" alt="kadis bleu" class="kadis-bleu-detail">
+                        {% endif %}
+                        {% if enregistrements[article.id] is defined %}
+                            <img class="rounded-circle rond-vert-detail" src="{{asset('assets/images/article/rond_vert.png')}}"  data-toggle="tooltip"
+                                 data-placement="bottom" title="dernier emprunt le {{ enregistrements[article.id] | date("d/m/Y") }} à {{ enregistrements[article.id] | date("H:m:s") }}">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row p-4">
+                    <div class="row col-lg-4">
+                    {%  if article.statut.libelle == "vendable" or article.statut.libelle == "reserve_achat" %}
+                        <div class="text-detail-size"><span class="text-orange">prix : </span><br>
+                            <span style="color: red">{{ article.montantVente }}€</span></div>
+                    {% endif %}
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="hidden" name="id" value="{{ article.id }}">
+                        {%  if article.statut.libelle == "empruntable" %}
+                            <a href="{{ path('add_article_panier',{id:article.id,  page: "detail"}) }}" class="style-button-article-emprunt-detail btn-responsive-detail">
+                                Emprunter</a>
+                        {% elseif article.statut.libelle == "vendable" %}
+                            <a href="{{ path('add_article_panier',{id:article.id,  page: "detail"}) }}" class="style-button-article-achat-detail btn-responsive-detail">
+                                Acheter</a>
+                        {% elseif article.statut.libelle == "emprunte" %}
+                            <p class="style-button-article-emprunte-detail btn-responsive-detail">
+                                Emprunté</p>
+                        {% elseif article.statut.libelle == "reserve_achat" %}
+                            <p class="style-button-article-reserve_achat-detail btn-responsive-detail">
+                                Réservation en cours </p>
+                        {% elseif article.statut.libelle == "reserve_emprunt" %}
+                            <p  class="style-button-article-reserve_emprunt-detail btn-responsive-detail">
+                                Réservation en cours </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="row">
+           <div class="col-lg-3">
+               <div class="text-detail-size"><span class="text-orange">moyenne des avis : </span>
+                   {% if moyenne is defined and moyenne != null %}
+                        {{ moyenne |round(1, 'floor') }}/5
+                   {% else %}
+                        pas de moyenne
+                   {% endif %}
+               </div>
+           </div>
+           <div class="col-lg-7">
+               <div class="row">
+                   <div class="col-lg-6">
+                       <div class="text-detail-size-subtitle p-2"><span class="text-bold">Informations supplémentaires : </span></div>
+                       <div class="p-2 text-responsive-detail"> <span class="text-orange">format :</span>
+                       {% if article.numerique == 0 %}
+                           <span>papier</span>
+                       {% else %}
+                           <span>numérique</span>
+                       {% endif %}
+                       </div>
+                       <div class="p-2 text-responsive-detail"> <span class="text-orange">code ISBN :</span>
+                           {% if article.genCode is empty %}
+                                aucun
+                           {% else %}
+                                {{ article.genCode }}
+                           {% endif %}
+                       </div>
+                       <div class="p-2 text-responsive-detail"> <span class="text-orange">contributeurs :</span>
+                           <!-- affiche tous les articles entités pour l'instant => changer pour ne pas afficher le premier peut etre -->
+                           {% if article.entites is not defined %}
+                               pas de contributeur
+                           {% elseif article.entites is empty %}
+                               pas de contributeur
+                           {% else %}
+                               {% for entite in article.entites %}
+                                   <span class="text-bold">{{ entite.typeEntite }}(s) :</span>
+                                   {{ entite.prenom | capitalize }}
+                                   {{ entite.nom is empty ? "inconnu" : entite.nom | capitalize }}
+                               {% endfor %}
+                           {% endif %}
+                       </div>
+                       <div class="p-2 text-responsive-detail"> <span class="text-orange">autres rubriques associées :</span>
+                           {% if article.rubrique is defined %}
+                                {% for rubrique in article.rubrique %}
+                                   {% if rubrique != article.rubrique[0] %}
+                                       {{ rubrique.libelle }} <!-- mettre la liste quand plusieurs rubriques -->
+                                   {% else %}
+                                       pas d'autre rubrique
+                                   {% endif %}
+                               {% endfor %}
+                           {% else %}
+                               aucune
+                           {% endif %}
+                       </div>
+                       <div class="p-2 text-responsive-detail"> <span class="text-orange">liens :</span> liens</div>
+                   </div>
+                   <div class="col-lg-6">
+                       <div class="text-detail-size-subtitle p-2"><span class="text-bold"> Vidéo Youtube : </span></div>
+                       <div><img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class=" vignette-responsive-no" ></div>
+                   </div>
+               </div>
+           </div>
+       </div>
+        {% endif %}
+    </div>
+    <!-- SECTION COMMENTAIRE -->
+    {% include 'avis/showAvisArticle.html.twig' %}
+    <!-- FIN SECTION COMMENTAIRE -->
+    <div class="row container-fluid">
+        <a class="edit-btn">Retour</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Vos données personnelles</title>
+</head>
+
+<body>
+    <h1>Vos données personnelles</h1>
+    
+    <div>
+       Avatar : {{app.user.avatar}}
+    </div>
+    <hr>
+        
+    <div>
+        Matricule : {{  app.user.matricule  }}
+    </div>
+    <hr>
+    
+    <div>
+        Identifiant : {{  app.user.username  }}
+    </div>
+    <hr>
+        
+    <div>
+        Prénom : {{  app.user.prenom  }}
+    </div>
+    <hr>
+
+    <div>
+        Nom : {{  app.user.nom  }}
+    </div>
+    <hr>
+
+    <div>
+        Sexe : {{  app.user.sexe  }}
+    </div>
+    <hr>
+
+    <div>
+        Entreprise : {{  app.user.entreprise.nom  }}
+    </div>
+    <hr>
+
+    <div>
+        Fonction : {{  app.user.fonction.libelle  }}
+    </div>
+    <hr>
+
+    <div>
+        Email de récupération : {{  app.user.emailRecup  }}
+    </div>
+    <hr>
+
+    <div>
+        Email personnel : {{  app.user.emailPerso  }}
+    </div>
+    <hr>
+
+    <div>
+        Email Professionnel : {{  app.user.emailPro  }}
+    </div>
+    <hr>
+
+    <div>
+        Télephone personnel principal : {{  app.user.telPerso  }}
+    </div>
+    <hr>
+    
+    <div>
+        Télephone personnel secondaire : {{  app.user.telPerso2  }}
+    </div>
+    <hr>
+
+    <div>
+        Télephone professionnel principal : {{  app.user.telPro  }}
+    </div>
+    <hr>
+
+    <div>
+        Télephone professionnel secondaire : {{  app.user.telPro2  }}
+    </div>
+    <hr>
+
+    <div>
+        Notification personnel :
+        {% if app.user.notificationPerso == 1 %}
+            <span class="text-success">Oui</span>
+        {% else %}
+            <span class="text-danger">Non</span>
+        {% endif %}
+    </div>
+
+    <div>
+        Notification professionnel :
+        {% if app.user.notificationPro == 1 %}
+            <span class="text-success">Oui</span>
+        {% else %}
+            <span class="text-danger">Non</span>
+        {% endif %}
+    </div>
+    <hr>
+
+    <div>
+        Adresse de la rue : {{  app.user.adresseRue  }}
+    </div>
+    <hr>
+
+    <div>
+        Compléments : {{  app.user.adresseRueComplement }}
+    </div>
+    <hr>
+    
+    <div>
+        Ville : {{  app.user.ville }}
+    </div>
+    <hr>
+
+    <div>
+        Code postal : {{  app.user.codePostal }}
+    </div>
+    <hr>
+
+    <div>
+        Droit Emprunt :
+        {% if app.user.droitEmprunt == 1 %}
+            <span class="text-success">Oui</span>
+        {% else %}
+            <span class="text-danger">Non</span>
+        {% endif %}
+    </div>
+
+    <div>
+        Droit d'achat :
+        {% if app.user.droitAchat == 1 %}
+            <span class="text-success">Oui</span>
+        {% else %}
+            <span class="text-danger">Non</span>
+        {% endif %}
+    </div>
+    <hr>
+
+    <div>
+        Date de création : {{  app.user.dateCreation | date('d/m/Y')}}
+    </div>
+    <hr>
+
+    <div>
+        Date de modification : {{  app.user.dateModification | date('d/m/Y')}}
+    </div>
+    <hr>
+
+    <div>
+        Commentaire : {{ app.user.commentaireUtilisateur}}
+    </div>
+    <hr>
+
+</body>
+</html>
+

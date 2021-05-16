@@ -1,0 +1,38 @@
+.filtre {
+    float: left;
+    width:50%; /* 2 colonnes */
+}
+
+.vente{
+    font-size: 100vh;
+}
+
+.hide-box {
+    transition: .25s ease;
+    max-height: 0;
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hide-box.-visible {
+    max-height: 99em;
+    max-width: 99em;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.sub-menu-filtre a:hover {
+    color: var(--second-color);
+    border-left: 0.5vh solid var(--second-color);
+}
+
+.sub-menu-filtre a {
+    color: #232323;
+    border-left: 0.5vh solid #232323;
+    transition:0.3s;
+    padding: 2vh;
+    text-decoration: none;
+    display: block;
+}

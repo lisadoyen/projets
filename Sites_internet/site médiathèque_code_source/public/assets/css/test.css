@@ -1,0 +1,19 @@
+img.home{
+    left: 1vh;
+    height: 8vh;
+    width:  8vh;
+    top : 0.3vh;
+    position: absolute;
+    transition: 0s;
+    filter: brightness(100%);
+}
+
+img.home:hover{
+    transition: 0.3s;
+    opacity: 50%;
+}
+
+img.titre-nav{
+    left: 10vh;
+    position: relative;
+}

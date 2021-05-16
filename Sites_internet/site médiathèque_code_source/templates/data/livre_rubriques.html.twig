@@ -1,0 +1,15 @@
+
+    <div class="filtre">
+        {% for rubrique in categories[0].rubriques |slice(0, categories[0].rubriques |length/2) %}
+            <input type="checkbox" name="rubriques[]" value="{{ rubrique.id }}"{% if donnees.rubriques[rubrique.id] is defined %} checked {% endif %}>
+            {{ rubrique.libelle|capitalize }}
+            <br/>
+        {% endfor %}
+    </div>
+    {% for rubrique in categories[0].rubriques|slice(categories[0].rubriques|length/2, categories[0].rubriques|length) %}
+        <input type="checkbox" name="rubriques[]" value="{{ rubrique.id}}"{% if donnees.rubriques[rubrique.id] is defined %} checked {% endif %}>
+        {{ rubrique.libelle|capitalize }}
+        <br/>
+    {% endfor %}
+
+

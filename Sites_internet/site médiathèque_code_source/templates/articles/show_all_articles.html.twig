@@ -1,0 +1,118 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 div-filtre">
+                <h2 class="center p-4 text-title-filtre-responsive">Filtre
+                <button class="edit-btn button-filtre" onclick="toggle_visibility(1)"><i onclick="btn_icone(this)" class="fas fa-arrow-up"></i></button></h2>
+                {% include 'data/_filtre_articles.html.twig' %}
+            </div>
+            <!--
+                Récup les infos dans entite via article_entite
+            -->
+            <div class="col-lg-9 p-4">
+                <div class="row">
+                    <div class="col-lg-8 float-left">
+                        <div class="row">
+                            <button value="icone" onclick="confirmMessageIcone('icone', this.value)"><img src="{{asset('assets/images/article/icone.jpg')}}" data-toggle="tooltip" data-placement="bottom" title="mode affichage en icone" alt="mode affichage en icones" class="mode-icone"></button>
+                            <button value="liste" onclick="confirmMessageList('liste', this.value)"><img src="{{asset('assets/images/article/list.png')}}" data-toggle="tooltip" data-placement="bottom" title="mode affichage liste détaillée" alt="mode affichage liste détaillée" class="mode-liste"></button>
+                            <button id="navbarDropdown" data-toggle="dropdown" class="edit-btn boutton-trier-par-responsive">
+                                <div class="text-trier">trier par &nbsp;</div><i class="fas fa-arrow-down"></i>
+                            </button>
+                            <div class="dropdown-menu menu-trier-responsive" style="z-index: 1">
+                                <div class="dropdown">
+                                    <div class="dropdown">
+                                        <div style="padding:1vh;color:white;background-color: var(--second-color)">Date d'acquisition <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <div class="dropdown-submenu" style="padding: 1vh;">
+                                            <a class="dropdown-item" href="{{ path('articles_show_order', {type:"date", order:"ASC" }) }}">Croissant</a>
+                                            <a class="dropdown-item" href="{{ path('articles_show_order', {type:"date", order:"DESC" }) }}">Décroissant</a>
+                                        </div>
+                                    </div>
+                                    <div style="padding:1vh;color:white;background-color: var(--second-color)">Titre <i class="fas fa-arrow-down"></i></div>
+                                    <div class="dropdown-submenu" style="padding: 1vh;">
+                                        <a class="dropdown-item" href="{{ path('articles_show_order', {type:"titre", order:"ASC" }) }}">Croissant</a>
+                                        <a class="dropdown-item" href="{{ path('articles_show_order', { type:"titre", order:"DESC"}) }}">Décroissant</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <div style="padding:1vh;color:white;background-color: var(--second-color)">Popularité <i class="fas fa-arrow-down"></i></div>
+                                    <div class="dropdown-submenu"  style="padding: 1vh;">
+                                        <a class="dropdown-item" href="{{path('articles_show_order', {type:"popularite", order:"ASC" })}}">Croissant</a>
+                                        <a class="dropdown-item" href="{{path('articles_show_order', {type:"popularite", order:"DESC"})}}">Décroissant</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <div style="padding:1vh;color:white;background-color: var(--second-color)">Note <i class="fas fa-arrow-down"></i></div>
+                                    <div class="dropdown-submenu"  style="padding: 1vh;">
+                                        <a class="dropdown-item" href="#">Croissant</a>
+                                        <a class="dropdown-item" href="#">Décroissant</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <div style="padding:1vh;color:white;background-color: var(--second-color)">Prix <i class="fas fa-arrow-down"></i>
+                                    </div>
+                                    <div class="dropdown-submenu" style="padding: 1vh;">
+                                        <a class="dropdown-item" href="{{ path('articles_show_order', {type:"montantVente", order:"ASC" }) }}">Croissant</a>
+                                        <a class="dropdown-item" href="{{ path('articles_show_order', {type:"montantVente", order:"DESC" }) }}">Décroissant</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 text-size">
+                                {% if ordre is defined and type is defined %}
+                                    {% if type == "montantVente" %}
+                                        {% if ordre == "ASC" %}
+                                            <span class="text-bold">prix : </span> croissant
+                                        {% else %}
+                                            <span class="text-bold">prix : </span> décroissant
+                                        {% endif %}
+                                    {% elseif type == "titre" %}
+                                        {% if ordre == "ASC" %}
+                                            <span class="text-bold">{{ type }} : </span> croissant
+                                        {% else %}
+                                            <span class="text-bold">{{ type }} : </span> décroissant
+                                        {% endif %}
+                                    {% elseif type == "date" %}
+                                        {% if ordre == "ASC" %}
+                                            <span class="text-bold">date d'acquisition : </span> croissant
+                                        {% else %}
+                                            <span class="text-bold">date d'acquisition : </span> décroissant
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="text-bold">{{ type | default("date d'acquisition") }} : </span> {{ ordre | default('décroissant') }}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <i class="col-lg-4 text-size">
+                        Légende :
+                        <div><div>
+                            <img src="{{asset('assets/images/blue/shopping-cart.png')}}" alt="kadis bleu" class="kadis-bleu">
+                            : produit actuellement dans votre panier
+                            </div>
+                            <div>
+                            <img class="rounded-circle rond-vert" src="{{asset('assets/images/article/rond_vert.png')}}"  data-toggle="tooltip" alt="rond-vert"
+                                title="dernier emprunt le [jj/mm/aaaa] à [H:m:s]">
+                            : produit déjà emprunté (survoler pour voir la date)
+                            </div>
+                        </div>
+                    </i>
+                </div>
+                <hr class="hr-responsive">
+                <div style="position:relative">
+                    <div id="icone">
+                        {% include 'articles/show_article_icone.html.twig' %}
+                    </div>
+                    <div id="liste" style="display: none;position:absolute">
+                        {% include 'articles/show_article_list.html.twig' %}
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                {{ knp_pagination_render(articles)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

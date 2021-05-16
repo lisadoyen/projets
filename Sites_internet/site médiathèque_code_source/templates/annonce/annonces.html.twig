@@ -1,0 +1,42 @@
+<h2 class="carousel-title"><span>Annonces</span></h2>
+
+<div id="annonceCarousel" class="carousel slide h-100 w-100 d-inline-block" data-ride="carousel" data-interval="0" >
+    {% if annonces and annonces is not empty %}
+        {% set act = annonces[0].id %}
+        <ol class="carousel-indicators">
+            {% for annonce in annonces %}
+                <li data-target="#annonceCarousel" data-slide-to="{{ annonce.id }}" {% if act == annonce.id %} class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+
+        <div class="carousel-inner">
+            {% for annonce in annonces %}
+                <div class="carousel-item {% if act == annonce.id %}active{% endif %}">
+                    <h3>{{ annonce.titre }}</h3>
+                    <div class="row">
+                        {% if annonce.vignette != NULL %}
+                            <div class="col-2">
+                                <img class="img-annonce" src="{{asset('assets/images/account/')}}{{ annonce.vignette }}" alt="{{ annonce.vignette }}">
+                            </div>
+                        {% endif %}
+                        <div class="col-lg responsive-annonce">
+                            <p class="text-justify"> {{ annonce.contenu|raw }} </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm text-center">
+            <a href="{{ path('annonce_index') }}" class="edit-btn">Voir la liste des annonces</a>
+        </div>
+        <a class="carousel-control-prev" href="#annonceCarousel" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#annonceCarousel" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+
+    {% else %}
+        <div class="alert-secondary">Aucune annonce</div>
+    {% endif %}
+</div>

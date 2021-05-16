@@ -1,0 +1,125 @@
+<?php //%255BApp%255CEntity%255CTrancheAge%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\TrancheAge',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\TrancheAge',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\TrancheAgeRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'libelle' => [
+                        'fieldName' => 'libelle',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 20,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'libelle',
+                    ],
+                    'ageMin' => [
+                        'fieldName' => 'ageMin',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'age_min',
+                    ],
+                    'ageMax' => [
+                        'fieldName' => 'ageMax',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'age_max',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                    'age_min' => 'ageMin',
+                    'age_max' => 'ageMax',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'libelle' => 'libelle',
+                    'ageMin' => 'age_min',
+                    'ageMax' => 'age_max',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'tranche_age',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'articles' => [
+                        'fieldName' => 'articles',
+                        'mappedBy' => 'trancheAge',
+                        'targetEntity' => 'App\\Entity\\Article',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 4,
+                        'inversedBy' => null,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\TrancheAge',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

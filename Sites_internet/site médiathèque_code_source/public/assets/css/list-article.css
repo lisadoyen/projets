@@ -1,0 +1,166 @@
+span.text-orange{
+    color: var(--second-color) !important;
+}
+
+.text-size{
+    font-size: 1.4vh;
+}
+
+.text-size-title{
+    font-size: 1.8vh;
+}
+
+.text-trier{
+    font-size: 1.5vh;
+}
+span.text-bold{
+    font-weight: bold;
+}
+span.text-nouveaute{
+    color : #902b2b;
+    text-transform: uppercase;
+    font-size: 2.3vh;
+}
+.style-button-article-emprunt{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #ab5e12;
+    font-size: 1rem;
+    background-color:#ab5e12;
+    color: white !important;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.style-button-article-emprunt:hover{
+    text-decoration: none;
+    background-color:white;
+    color:#9f5811 !important;
+}
+
+.style-button-article-emprunte{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #d9dbdb;
+    font-size: 1rem;
+    background-color:#d9dbdb;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+.style-button-article-reserve_achat{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #B0C4DE;
+    font-size: 1rem;
+    background-color:#B0C4DE;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+.style-button-article-reserve_emprunt{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #B0E0E6;
+    font-size: 1rem;
+    background-color: #B0E0E6;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+.style-button-article-achat{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #ebb986;
+    font-size: 1rem;
+    background-color:#ebb986;
+    color: white !important;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.style-button-article-achat:hover{
+    text-decoration: none;
+    background-color:white;
+    color:#ebb986 !important;
+}
+
+.color-bg-titre{
+    color:red;
+}
+
+.kadis-bleu{
+    width:30px;
+    height: 30px;
+}
+
+.img-icone{
+    width: 120px;
+    height: 150px;
+}
+
+.img-icone-no{
+    width: 120px;
+    height: 120px;
+}
+
+.mode-icone{
+    width: 20px;
+    height: 20px;
+}
+
+.mode-liste{
+    width: 20px;
+    height: 20px;
+}
+
+.etoile{
+    font-size: 2em;
+}
+
+.hr-responsive{
+    display: none;
+}
+
+.hr-liste{
+    height:1px;
+    border:none;
+    color:#aeb3b9;
+    background-color:#aeb3b9;
+}
+
+.rond-vert{
+    margin: 0.5vh;
+    width: 3.5vh;
+    height: 3vh;
+}

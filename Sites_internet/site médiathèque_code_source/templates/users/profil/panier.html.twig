@@ -1,0 +1,336 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <div class="row text-responsive">
+            <div class="col-sm">
+                <h1 class="text-title-filtre-responsive">Votre Panier ({{ totalPanier }})</h1>
+            </div>
+            <div class="col-sm">
+                {% if achat is not empty or emprunt is not empty %}
+                    <b class="float-right pr-2">00:00:00 <span class="text-danger">*</span></b>
+                {% endif %}
+            </div>
+        </div><hr>
+
+        {% if achat is not empty or emprunt is not empty %}
+            <div class="row justify-content-end ">
+                <button type="button" class="btn btn-danger mr-6 btn-responsive-global" data-toggle="modal" data-target="#viderPanier">
+                    Vider le panier
+                </button>
+            </div>
+
+            <div class="modal fade text-responsive" id="viderPanier" tabindex="-1" role="dialog" aria-labelledby="viderPanierTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-responsive" id="viderPanierTitle">Vider le panier</h5>
+                            <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Voulez-vous vraiment vider votre panier ?
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-sm">
+                                <button type="button" class="btn btn-danger float-right btn-responsive-global" data-dismiss="modal">Non</button>
+                            </div>
+                            <div class="col-sm">
+                                <form action="{{ path('vider_panier') }}" method="POST" style="display:inline">
+                                    <input type="hidden" name="token" value="{{ csrf_token('panier_delete') }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-success float-left btn-responsive-global">Oui</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if achat is not empty %}
+                <div class="row mb-5">
+                    <h2 class="titre-responsive">Vos Achats ({{ achat|length }})</h2>
+                    <table class="table table-responsive">
+                        <thead class="text-responsive">
+                        <tr>
+                            <th scope="col">Vignette</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Statut</th>
+                            <th scope="col">Prix</th>
+                            <th colspan="2"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-responsive">
+                        {% for pan in achat %}
+                            <tr>
+                                <td>
+                                    {%  if pan.article.vignette is not empty %}
+                                        <img src="{{ pan.article.vignette }}" alt="image de {{ pan.article.titre }}" class="img-icone">
+                                    {% else %}
+                                        <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-icone-no">
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {%  if pan.article.titre is not empty %}
+                                        {{ pan.article.titre | capitalize }}
+                                    {% else %}
+                                        {{ pan.article.codeArticle }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ pan.article.genre.libelle }}
+                                </td>
+                                <td>
+                                    {{ pan.article.categorie.libelle }}
+                                </td>
+                                <td>
+                                    {{ pan.article.statut.libelle }}
+                                </td>
+                                <td>
+                                    {% if pan.typeEnregistrement.libelle == "achat" and pan.article.statut.libelle !="vendu" %}
+                                        {{ pan.article.MontantVente }} €
+                                    {% elseif pan.typeEnregistrement.libelle == "achat" and pan.article.statut.libelle =="vendu" %}
+                                        vendu
+                                    {% else %}
+                                        Gratuit
+                                    {% endif %}
+                                </td>
+                                <td class="col-3">
+                                    <a href="{{ path('article_details', {id: pan.article.id}) }}" class="btn edit-btn btn-responsive-global">Voir plus de détails</a>
+                                </td>
+
+                                {% if pan.article.id not in favoris or favoris is null %}
+                                    <td class="align-content-center">
+                                        <button type="button" class="close p-4 btn-responsive-global" aria-label="Close" data-toggle="modal" data-target="#supprArticlePanier{{ pan.article.id }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+
+                                        <div class="modal fade text-responsive" id="supprArticlePanier{{ pan.article.id }}" tabindex="-1" role="dialog" aria-labelledby="supprArticlePanier{{ pan.article.id }}Title" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-responsive" id="exampleModalLongTitle">Supprimer cet article</h5>
+                                                        <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Voulez-vous déplacer cet article dans vos favoris ou le supprimer de votre panier ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="col-sm">
+                                                            <a href="{{ path('remove_article_panier', {id: pan.article.id}) }}" class="btn btn-danger float-right btn-responsive-global">Supprimer</a>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <a href="{{ path('move_article_panier_favoris', {id: pan.article.id}) }}" class="btn btn-success float-left btn-responsive-global">Favoris</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% else %}
+                                    <td class="align-content-center">
+                                        <button type="button" class="close p-4 btn-responsive-global" aria-label="Close" data-toggle="modal" data-target="#supprArticlePanier{{ pan.article.id }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+
+                                        <div class="modal fade text-responsive" id="supprArticlePanier{{ pan.article.id }}" tabindex="-1" role="dialog" aria-labelledby="supprArticlePanier{{ pan.article.id }}Title" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-responsive" id="exampleModalLongTitle">Supprimer cet article</h5>
+                                                        <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Voulez-vous supprimer cet article de votre panier (vous l'avez déjà dans vos favoris) ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="col-sm">
+                                                            <a href="{{ path('remove_article_panier', {id: pan.article.id}) }}" class="btn btn-danger float-right btn-responsive-global">Oui</a>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <a href="{{ path('panier', {id: pan.article.id}) }}" class="btn btn-success float-left btn-responsive-global">Non</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-responsive">Total des articles achetés : <b>{{ totalAchat }}€</b></div>
+                </div>
+            {% endif %}
+            {% if emprunt is not empty %}
+                <div class="row">
+                    <h2 class="titre-responsive">Vos Emprunts ({{ emprunt|length }})</h2>
+                    <table class="table table-responsive">
+                        <thead class="text-responsive">
+                            <tr>
+                                <th scope="col">Vignette</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Genre</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Prix</th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-responsive">
+                        {% for pan in emprunt %}
+                            <tr>
+                                <td>
+                                    {%  if pan.article.vignette is not empty %}
+                                        <img src="{{ pan.article.vignette }}" alt="image de {{ pan.article.titre }}" class="img-icone">
+                                    {% else %}
+                                        <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-icone-no">
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {%  if pan.article.titre is not empty %}
+                                        {{ pan.article.titre | capitalize }}
+                                    {% else %}
+                                        {{ pan.article.codeArticle }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ pan.article.genre.libelle }}
+                                </td>
+                                <td>
+                                    {{ pan.article.categorie.libelle }}
+                                </td>
+                                <td>
+                                    {{ pan.article.statut.libelle }}
+                                </td>
+                                <td>
+                                    {% if pan.typeEnregistrement.libelle == "achat" and pan.article.statut.libelle !="vendu" %}
+                                        {{ pan.article.MontantVente }} €
+                                    {% elseif pan.typeEnregistrement.libelle == "achat" and pan.article.statut.libelle =="vendu" %}
+                                        vendu
+                                    {% else %}
+                                        gratuit
+                                    {% endif %}
+                                </td>
+                                <td class="col-3">
+                                    <a href="{{ path('article_details', {id: pan.article.id}) }}" class="btn edit-btn btn-responsive-global">Voir plus de détails</a>
+                                </td>
+
+                                {% if pan.article.id not in favoris or favoris is null %}
+                                    <td class="align-content-center">
+                                            <button type="button" class="close p-4 btn-responsive-global" aria-label="Close" data-toggle="modal" data-target="#supprArticlePanier{{ pan.article.id }}">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+
+                                            <div class="modal fade text-responsive" id="supprArticlePanier{{ pan.article.id }}" tabindex="-1" role="dialog" aria-labelledby="supprArticlePanier{{ pan.article.id }}Title" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-responsive" id="exampleModalLongTitle">Supprimer cet article</h5>
+                                                            <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Voulez-vous déplacer cet article dans vos favoris ou le supprimer de votre panier ?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="col-sm">
+                                                                <a href="{{ path('remove_article_panier', {id: pan.article.id}) }}" class="btn btn-danger float-right btn-responsive-global">Supprimer</a>
+                                                            </div>
+                                                            <div class="col-sm">
+                                                                <a href="{{ path('move_article_panier_favoris', {id: pan.article.id}) }}" class="btn btn-success float-left btn-responsive-global">Favoris</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    {% else %}
+                                        <td class="align-content-center">
+                                            <button type="button" class="close p-4 btn-responsive-global" aria-label="Close" data-toggle="modal" data-target="#supprArticlePanier{{ pan.article.id }}">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+
+                                            <div class="modal fade text-responsive" id="supprArticlePanier{{ pan.article.id }}" tabindex="-1" role="dialog" aria-labelledby="supprArticlePanier{{ pan.article.id }}Title" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-responsive" id="exampleModalLongTitle">Supprimer cet article</h5>
+                                                            <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Voulez-vous supprimer cet article de votre panier (vous l'avez déjà dans vos favoris) ?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="col-sm">
+                                                                <a href="{{ path('remove_article_panier', {id: pan.article.id}) }}" class="btn btn-danger float-right btn-responsive-global">Oui</a>
+                                                            </div>
+                                                            <div class="col-sm">
+                                                                <a href="{{ path('panier', {id: pan.article.id}) }}" class="btn btn-success float-left btn-responsive-global">Non</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+            <hr>
+            <div class="row justify-content-end text-responsive">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-success float-right btn-responsive-global" data-toggle="modal" data-target="#validerCommande">
+                        Valider la commande
+                    </button>
+
+                    <div class="modal fade text-responsive" id="validerCommande" tabindex="-1" role="dialog" aria-labelledby="validerCommandeTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-responsive" id="validerCommandeTitle">Valider la commande</h5>
+                                    <button type="button" class="close btn-responsive-global" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Voulez-vous vraiment valider votre panier ?
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col-sm">
+                                        <button type="button" class="btn btn-danger float-right btn-responsive-global" data-dismiss="modal">Non</button>
+                                    </div>
+                                    <div class="col-sm">
+                                        <form action="{{ path('valider_panier') }}" method="POST" style="display:inline">
+                                            <input type="hidden" name="token" value="{{ csrf_token('valider_panier') }}">
+                                            <input type="hidden" name="_method" value="GET">
+                                            <button type="submit" class="btn btn-success float-left btn-responsive-global">Oui</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <small class="text-danger text-responsive">* Temps restant avant le vidage du panier</small>
+        {% else %}
+            <div class="col-sm m-2 text-responsive">
+                <b>Vous n'avez pas d'article dans votre panier</b>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

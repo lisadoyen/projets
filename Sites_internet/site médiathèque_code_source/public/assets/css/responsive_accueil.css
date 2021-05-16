@@ -1,0 +1,112 @@
+/* en dessous de 1160 px */
+@media screen and (max-width: 1110px) {
+
+    .content-desktop {display: none !important;}
+    
+    .background-home {
+        height: 90vh;
+    }
+    .titre{
+        font-size: 4vh!important;
+        padding-left: 1vh !important;
+    }
+   .navbar-toggler{
+        font-size: 3rem;
+    }
+    .navbar-collapse{
+        font-size: 3rem;
+        letter-spacing: 0.5vh;
+    }
+    .dropdown-menu{
+        font-size: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width: 1700px){
+    .responsive-annonce{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* demi écran */
+/* PAGE D'ACCUEIL */
+@media screen and (max-width: 700px){
+    h1#main-title{
+        font-size: 0vh;
+        left: 0vh;
+        top : 0vh;
+    }
+
+    body{
+        display: block;
+    }
+
+    .photo-nouveaute{
+        width: 40vh;
+        height: 40vh;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    .photo-nouveaute{
+        width: 30vh;
+        height: 30vh;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .photo-nouveaute{
+        width: 20vh;
+        height: 20vh;
+    }
+}
+
+
+/* TELEPHONE */
+@media screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    .content-mobile {display: none !important;}
+
+    h2.carousel-title, h3.carousel-title {
+        font-size: 60px;
+    }
+
+    h3{
+        font-size: 40px;
+    }
+
+    p{
+        font-size: 40px;
+    }
+
+    .container-carousel{
+        padding: 60px;
+    }
+
+    .text-center > .edit-btn{
+        font-size: 3rem;
+    }
+
+    .carousel-indicators {
+        bottom: 120px;
+    }
+
+    h1#main-title{
+        font-size: 0vh;
+        left: 0vh;
+        top : 0vh;
+    }
+
+    /* logo mediatheque pour home */
+    img.home{
+        height: 6vh;
+        width:  6vh;
+        top: 1vh;
+    }
+}

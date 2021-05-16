@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Tag</h1>
+
+    <table class="table table-responsive">
+        <tbody  class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <td>{{ tag.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ tag.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tag_index') }}" class="edit-btn btn-responsive-global">Liste des tags</a>
+    <a href="{{ path('tag_edit', {'id': tag.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+
+    {{ include('tag/_delete_form.html.twig') }}
+</div>
+{% endblock %}

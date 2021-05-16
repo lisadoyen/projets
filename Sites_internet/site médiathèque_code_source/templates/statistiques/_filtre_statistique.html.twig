@@ -1,0 +1,61 @@
+<h2 class="center p-4 text-title-filtre-responsive">Filtre</h2><hr>
+    <div class="text-responsive">
+
+    <form method="post" action="{{ path('admin_statistiques') }}" >
+        <input type="hidden" name="token" value="{{ csrf_token('form_articles') }}">
+        <button type="submit" class="edit-btn button-filtre">Filtrer</button>
+
+            <div>Filtre activé :</div><br>
+            <div class="container" style="color: grey">
+                <u style="text-decoration: none">
+                    {% if donnees.categories is defined and categories is not empty %}
+                        {% for categorie in categories %}
+                            {% if donnees.categories[categorie.id] is defined %}
+                                <li> categorie : <strong>{{ categorie.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if donnees.genres is defined and genres is not empty %}
+                        {% for genre in genres %}
+                            {% if donnees.genres[genre.id] is defined %}
+                                <li> genre : <strong>{{ genre.libelle|capitalize }}</strong></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </u>
+           </div>
+
+        <hr>
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-1" data-js="hide"><h5 class="text-responsive">Catégories</h5></a>
+            </div>
+            <div id="mon-bloc-1" class="hide-box p-2">
+                <div class="filtre">
+                    {% for categorie in categories|slice(0, categories|length/2) %}
+                        <input onclick="visible_genre()" type="checkbox" name="categories[]" value="{{ categorie.id }}"{% if donnees.categories[categorie.id] is defined %} checked {% endif %}>
+                        {{ categorie.libelle|capitalize }}
+                        <br/>
+                    {% endfor %}
+                </div>
+                    {% for categorie in categories|slice(categories|length/2, categories|length) %}
+                        <input onclick="visible_genre()" type="checkbox" name="categories[]" value="{{ categorie.id}}"{% if donnees.categories[categorie.id] is defined %} checked {% endif %}>
+                        {{ categorie.libelle|capitalize }}
+                        <br/>
+                    {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="sub-menu-filtre">
+                <a href="#mon-bloc-2" data-js="hide"><h5 class="text-responsive">Genres</h5></a>
+            </div>
+            <div id="mon-bloc-2" class="hide-box p-2">
+                    {% include 'data/livre_genre.html.twig' %}
+                    {% include 'data/video_genre.html.twig' %}
+            </div>
+        </div>
+    </form>
+</div>
+
+

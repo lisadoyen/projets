@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+<div class="container cadre">
+    <h1 class="titre-responsive">Listes des Liens</h1>
+
+    <table class="table table-responsive">
+        <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-show-responsive-detail">
+        {% for lien in liens %}
+            <tr>
+                <td>{{ lien.id }}</td>
+                <td>{{ lien.adresse }}</td>
+                <td>
+                    <a href="{{ path('lien_show', {'id': lien.id}) }}" class="edit-btn btn-responsive-global">Détails</a>
+                    <a href="{{ path('lien_edit', {'id': lien.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">pas de liens dans la base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('lien_new') }}" class="edit-btn btn-responsive-global">Nouveau lien</a>
+    <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+</div>
+{% endblock %}

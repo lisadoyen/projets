@@ -1,0 +1,63 @@
+<div class="col-sm ">
+    <h2 class="carousel-title"><span>Nouveautés</span></h2>
+    <div id="newsCarousel" class="carousel slide h-100 w-100 d-inline-block" data-ride="carousel" data-interval="0">
+
+        <ol class="carousel-indicators">
+            <li data-target="#newsCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#newsCarousel" data-slide-to="1"></li>
+            <li data-target="#newsCarousel" data-slide-to="2"></li>
+            <li data-target="#newsCarousel" data-slide-to="3"></li>
+            <li data-target="#newsCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="h-100 w-100 d-inline-block">
+                            <h2 class="text-center mb-4 titre-nouv" style="color: #25737d">{{ nouveaute[0].titre | capitalize}}</h2>
+                            {% if nouveaute[0].vignette == NULL %}
+                                <input type="hidden" name="id" value="{{ nouveaute[0].id }}">
+                                <a href="{{ path('article_details', {id: nouveaute[0].id}) }}">
+                                    <img class="photo-nouveaute" src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image"></a>
+                            {% else %}
+                                <input type="hidden" name="id" value="{{ nouveaute[0].id }}">
+                                <a href="{{ path('article_details', {id: nouveaute[0].id}) }}">
+                                    <img class="photo-nouveaute" src="{{ nouveaute[0].vignette }}" alt="{{ nouveaute[0].vignette }}"></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for new in nouveaute | slice(1, 4) %}
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="h-100 w-100 d-inline-block">
+                                <h2 class="text-center mb-4" style="color: #25737d">{{ new.titre | capitalize}}</h2>
+                                {% if new.vignette == NULL %}
+                                    <input type="hidden" name="id" value="{{ new.id }}">
+                                    <a href="{{ path('article_details', {id: new.id}) }}">
+                                        <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" width="auto" height="500"></a>
+                                {% else %}
+                                    <input type="hidden" name="id" value="{{ new.id }}">
+                                    <a href="{{ path('article_details', {id: new.id}) }}">
+                                        <img src="{{ new.vignette }}" alt="{{ new.vignette }}" width="auto" height="500"></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm text-center m-3">
+            <a href="{{ path('nouveautes') }}" class="edit-btn">Voir la liste des nouveautés disponibles</a>
+        </div>
+        <a class="carousel-control-prev" href="#newsCarousel" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#newsCarousel" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{# Permet de mettre le style de formulaire a toutes les entites ajoutées#}
+{% import _self as formMacros %}
+{% macro printEntiteSubForm(entite) %}
+    <div class="row text-responsive">
+        <div class="col">
+            {{ form_row(entite.typeEntite, {'label': 'Type'}) }}
+        </div>
+        <div class="col">
+            {{ form_row(entite.nom) }}
+        </div>
+        <div class="col">
+            {{ form_row(entite.prenom) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{# Formulaire #}
+{{ form_start(form, { 'attr': { 'class' : 'form-maintenance-responsive' }}) }}
+{{ form_row(form.gencode ) }}
+{{ form_row(form.codeArticle) }}
+{{ form_row(form.categorie) }}
+{{ form_row(form.titre) }}
+{{ form_row(form.datePublication) }}
+{{ form_row(form.vignette) }}
+{{ form_row(form.description) }}
+{{ form_row(form.genre) }}
+{{ form_row(form.rubriques) }}
+
+{# todo : system de tags#}
+{#{{ form_row(form.tags) }}#}
+
+{{ form_row(form.trancheAge) }}
+
+{{ form_label(form.entites) }}
+<div class="entites" data-prototype="{{ formMacros.printEntiteSubForm(form.entites.vars.prototype)|e('html_attr') }}">
+    {% for entite in form.entites %}
+        <div class="entite-subform">{{ formMacros.printEntiteSubForm(entite) }}</div>
+    {% endfor %}
+</div>
+<button type="button" class="add_item_link" data-collection-holder-class="entites">+</button>
+
+<br><hr>
+{{ form_row(form.statut) }}
+{{ form_row(form.montantObtention) }}
+{{ form_row(form.dateObtention) }}
+{{ form_row(form.montantCaution) }}
+{{ form_row(form.montantVente) }}
+{{ form_row(form.observation) }}
+{{ form_row(form.numerique) }}
+
+<button class="edit-btn btn-responsive-global">{{ button_label|default('Appliquer') }}</button>
+{{ form_end(form) }}
+
+{# jquery complet necessaire pour ajax, jquery slim (donne avec bootstrap?) ne suffit pas#}
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/article_form.js') }}"></script>

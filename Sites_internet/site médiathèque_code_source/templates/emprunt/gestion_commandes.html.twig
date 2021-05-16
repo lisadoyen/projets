@@ -1,0 +1,86 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5 titre-responsive">Les commandes ({{ statut }}) ({{ nbEmprunt |number_format(0, '', ' ') }})</h1>
+        <div class="row">
+            <div class="col-sm">
+                <a href="{{ path('gestion_actif_commande') }}" class="edit-btn float-left btn-responsive-global">Achats Actifs</a>
+            </div>
+            <div class="col-sm">
+                <a href="{{ path('gestion_historique_commande') }}" class="edit-btn float-right btn-responsive-global">Tous les Achats (historiques)</a>
+            </div>
+        </div>
+        {% if emprunts is not empty %}
+            <table class="table table-responsive">
+                <thead class="text-responsive">
+                <tr>
+                    <th scope="col">Vignette article</th>
+                    <th scope="col">Titre article</th>
+                    <th scope="col">Catégorie article</th>
+                    <th scope="col">Utilisateur</th>
+                    <th scope="col">no Commande</th>
+                    <th scope="col">Date d'enregitrement</th>
+                    <th scope="col">Date de préparation</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Statut</th>
+                </tr>
+                </thead>
+                <tbody class="text-responsive">
+                {% for emprunt in emprunts %}
+                    <tr>
+                        <td>
+                            {%  if emprunt.article.vignette is not empty %}
+                                <img src="{{ emprunt.article.vignette }}" alt="image de {{ emprunt.article.titre }}" class="img-icone">
+                            {% else %}
+                                <img src="{{asset('assets/images/noImage.jpg')}}" alt="pas d'image" class="img-icone-no">
+                            {% endif %}
+                        </td>
+                        <td>
+                            {%  if emprunt.article.titre is not empty %}
+                                {{ emprunt.article.titre | capitalize }}
+                            {% else %}
+                                {{ emprunt.article.codeArticle }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ emprunt.article.categorie.libelle }}
+                        </td>
+                        <td>
+                            {{ emprunt.utilisateur.nom }} {{ emprunt.utilisateur.prenom }}
+                        </td>
+                        <td>
+                            {{ emprunt.noCommande }}
+                        </td>
+                        <td>
+                            {{ emprunt.dateEnregistrement | date('d/m/Y') }}
+                        </td>
+                        <td>
+                            {{ emprunt.datePreparationFini | date('d/m/Y') }}
+                        </td>
+                        <td>
+                            {{ emprunt.typeEnregistrement.libelle }}
+                        </td>
+                        <td>
+                            {% if emprunt.statutEnregistrement.libelle =="en attente" %}
+                                <a href="{{ path('changer_statut_pret',{id:emprunt.id} ) }}" class="btn edit-btn btn-responsive-global">Prêt</a>
+                            {% elseif emprunt.statutEnregistrement.libelle =="pret" %}
+                                    <a href="{{ path('changer_statut_achete',{id:emprunt.id} ) }}" class="btn edit-btn btn-responsive-global">Acheté</a>
+                            {% else %}
+                                <span>{{ emprunt.statutEnregistrement.libelle }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="col-sm m-2 text-responsive">
+                <b>Aucune commande ({{ statut }})</b>
+            </div>
+        {% endif %}
+        <hr class="mb-5">
+        <div class="pagination">
+            {{ knp_pagination_render(emprunts)}}
+        </div>
+    </div>
+{% endblock %}

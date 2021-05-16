@@ -1,0 +1,42 @@
+{% extends "layout.html.twig" %}
+{% block body %}
+    <div class="container cadre">
+        <h1 class="titre-responsive">Liste des genres</h1>
+
+        <table class="table table-responsive">
+            <thead class="text-show-responsive-detail">
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Categories</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody class="text-show-responsive-detail">
+            {% for genre in genres %}
+                <tr>
+                    <td>{{ genre.id }}</td>
+                    <td>{{ genre.libelle }}</td>
+                    <td>
+                        {% for cat in genre.categories %}
+                            <span class="alert-info rounded p-1">{{ cat.libelle }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{{ path('genre_show', {'id': genre.id}) }}" class="edit-btn btn-responsive-global">Details</a>
+                        <a href="{{ path('genre_edit', {'id': genre.id}) }}" class="edit-btn btn-responsive-global">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">pas de rubriques dans la base de données</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('genre_new') }}" class="edit-btn btn-responsive-global">Nouveau genre</a>
+        <a href="{{ path('crud_list') }}" class="edit-btn btn-responsive-global ml-0">Menu</a>
+    </div>
+{% endblock %}

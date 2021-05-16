@@ -1,0 +1,184 @@
+span.text-orange{
+    color: var(--second-color) !important;
+}
+
+.text-detail-size{
+    font-size: 2vh;
+}
+
+.text-detail-size-title{
+    font-size: 5vh;
+}
+
+.text-detail-size-subtitle{
+    font-size: 2.5vh;
+}
+
+span.text-bold{
+    font-weight: bold;
+}
+
+span.text-detail-size-nouveaute{
+    color : #902b2b;
+    text-transform: uppercase;
+    font-size: 4vh;
+}
+
+
+.style-button-article-emprunt-detail{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #ab5e12;
+    font-size: 2rem;
+    background-color:#ab5e12;
+    color: white !important;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.style-button-article-emprunt-detail:hover{
+    text-decoration: none;
+    background-color:white;
+    color:#9f5811 !important;
+}
+
+.style-button-article-emprunte-detail{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #d9dbdb;
+    font-size: 2rem;
+    background-color:#d9dbdb;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+.style-button-article-achat-detail{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #ebb986;
+    font-size: 2rem;
+    background-color:#ebb986;
+    color: white !important;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.style-button-article-achat-detail:hover{
+    text-decoration: none;
+    background-color:white;
+    color:#ebb986 !important;
+}
+
+
+.style-button-article-reserve_achat-detail{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #B0C4DE;
+    font-size: 2rem;
+    background-color:#B0C4DE;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+.style-button-article-reserve_emprunt-detail{
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    padding: 7px;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    border: 2px solid #B0E0E6;
+    font-size: 2rem;
+    background-color: #B0E0E6;
+    color: black !important;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
+}
+
+span.text-com{
+    font-size: 5vh;
+    font-weight: bold;
+    color : #713e0c !important;
+}
+
+.star:hover .star-pleine,
+.star .star-nonpleine {
+    display: none;
+}
+.star:hover .star-nonpleine {
+    display: inline;
+}
+a:hover {
+    text-decoration: none !important;
+}
+
+
+.tde {cursor:pointer;}
+
+
+.img-liste{
+    width: 150px;
+    height: 180px;
+}
+
+.img-liste-no{
+    width:150px;
+    height:150px;
+}
+
+.img-pseudo-responsive{
+    width: 40px;
+    height: 40px;
+}
+
+.vignette-responsive{
+    width: 330px;
+    height: 420px;
+}
+
+.vignette-responsive-no{
+    width: 330px;
+    height: 330px;
+}
+
+.kadis-bleu-detail{
+    width: 75px;
+    height: 75px;
+}
+
+.rond-vert-detail{
+    margin: 0.5vh;
+    width:85px;
+    height: 75px;
+}
+
+
+.scrollbar {
+    height: 35em;
+    overflow: auto;
+}
