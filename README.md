@@ -22,6 +22,7 @@ sur Youtube :
 - vidéo démo site internet vente de produits (partie authentification) : https://youtu.be/ibp1vIj0MNU
 - vidéo démo site internet vente de produits (partie client) : https://youtu.be/7C2DOYigm6A
 - vidéo démo site internet vente de produits (partie administrateur) : https://youtu.be/G5ggxJK_9p4
+- vidéo démo site internet médiathèque : https://www.youtube.com/watch?v=pXiLZZH4Spk
 
 
 ---
