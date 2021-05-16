@@ -6,17 +6,20 @@
 **code source** : tous les dossiers et fichiers du code source du projet
 
 **document** : 
- - maquette
+ - Maquettes
    - Pages
    - ERD
    - Logigrammes
    - IHM ancienne application
- - evolution
- - diaporamas
- - rapports
+ - Evolution
+ - Diaporamas
+ - Rapports
+ - BDD existantes
+ - BDD création
+ - Infos
  
  
-# récapitulatif
+# récapitulatif des fonctionnalités
 
 - 3 types d'utilisateurs :
 
