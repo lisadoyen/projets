@@ -30,3 +30,9 @@ sur Youtube :
 # Projects
 
 This repository contains various projects. I did them during my two years of HND from 2019 to 2021. 
+
+---
+
+# Credit
+
+auteur/author : Lisa Doyen
