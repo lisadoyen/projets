@@ -14,6 +14,9 @@ Un projet de développement individuel du jeu Kamisado en java et java Swing.
 # Sites Internet
 Un site pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client.
 
+# Développement outil de prototypage IHM
+Un projet de développement dans le cadre de mon stage de fin de DUT (10 semaines). Il s'agit d'un développement open source d'un outil de prototypage IHM en Pharo pour des composants.
+Lien du GitHub : https://github.com/OpenSmock/Molecule (ma partie : UI Tools overview).
 
 ## Liens des Vidéos
 sur Youtube :
