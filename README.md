@@ -18,10 +18,16 @@ J'ai également réalisé un autre site internet en HTML/CSS/JS/PHP avec le Fram
 
 J'ai aussi développé un site internet en NodeJS dont la démo (lien https://youtu.be/Yqn5NhnRzNk) est présente sur Youtube.
 
-# Développement outil de prototypage IHM
+# UI Tools : développement outil de prototypage IHM 
 J'ai réalisé un projet dans le cadre de mon stage de fin de DUT (10 semaines). Il s'agit d'un développement open source d'un outil de prototypage IHM en Pharo pour des composants. Pour ce projet, j'ai utilisé les méthodes d'UX design et Design Thinking.
 
 Lien du GitHub : https://github.com/OpenSmock/Molecule (ma partie : UI Tools overview).
+
+Un démonstration de l'outil est visible sur Youtube via ces 3 liens :
+- https://youtu.be/8OGZhinqzZY => manipulation des composants
+- https://youtu.be/H8vLvfSXupE => visualisation graphique des composants
+- https://youtu.be/XO7V8dF9WhQ => visualisation graphique des instances de composants
+
 
 ## Liens des Vidéos
 sur Youtube :
@@ -32,6 +38,9 @@ sur Youtube :
 - vidéo démo site internet vente de produits (partie administrateur) : https://youtu.be/G5ggxJK_9p4
 - vidéo démo site internet médiathèque partie 1 : https://youtu.be/XLJbswm0ia0
 - vidéo démo site internet médiathèque partie 2 : https://www.youtube.com/watch?v=pXiLZZH4Spk
+- vidéo démo de l'outil (manipulation des composants) : https://youtu.be/8OGZhinqzZY 
+- vidéo démo de l'outil (visualisation graphique des composants) : https://youtu.be/H8vLvfSXupE
+- vidéo démo de l'outil (visualisation graphique des instances de composants) : https://youtu.be/XO7V8dF9WhQ
 
 
 ---
