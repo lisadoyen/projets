@@ -6,3 +6,5 @@ Voici 3 liens Youtube qui contiennent des démonstrations de l'outil :
 - https://youtu.be/8OGZhinqzZY => manipulation des composants
 - https://youtu.be/H8vLvfSXupE => visualisation graphique des composants
 - https://youtu.be/XO7V8dF9WhQ => visualisation graphique des instances de composants
+
+Dans ce dossier, vous pouvez retrouver mon rapport général, mon rapport technique et mon diaporama pour la soutenance du projet.
