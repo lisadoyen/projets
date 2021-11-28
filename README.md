@@ -9,7 +9,7 @@ J'ai participé à un projet de développement du jeu de société CO2 en Java e
 J'ai contribué à un projet de développement du jeu Snake en Java et Java Swing réalisé au semestre 2 par groupe de 6. Nous avons apporté de nouvelles fonctionnalités comme l'ajout de différents modes (chrono, labyrinthe, classique, duo), d'un choix du niveau de difficulté (facile, moyen, difficile) et d'un système de bonus et malus. 
 
 # Kamisado 
-J'ai réalisé un projet de développement individuel du jeu Kamisado en Java et Java Swing. Une intelligence artificielle est églalement présente dans le jeu. Voici le lien de la démonstration : https://youtu.be/B6b0kyvBPdM.
+J'ai réalisé un projet de développement individuel du jeu Kamisado en Java et Java Swing. Une intelligence artificielle est églalement présente dans le jeu. Voici le lien de la  vidéo de la démonstration : https://youtu.be/B6b0kyvBPdM.
 
 # Sites Internet
 J'ai participé au développement d'un site internet pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client. Nous étions 4 dans ce projet. J'ai été la cheffe de groupe. Les liens des vidéos sont https://youtu.be/XLJbswm0ia0 (partie 1) et https://www.youtube.com/watch?v=pXiLZZH4Spk (partie 2).
