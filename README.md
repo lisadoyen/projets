@@ -6,7 +6,7 @@ Ce dépôt contient mes projets réalisés durant mes 2 années de DUT de 2019 �
 J'ai participé à un projet de développement du jeu de société CO2 en Java et Javafx réalisé au semestre 3 basé sur les méthodes agiles (groupe de 6 dont un product owner). Une démonstration vidéo est disponible en suivant ce lien : https://youtu.be/F5PmEuGwsrU.
 
 # Snake
-J'ai contribué à un projet de développement du jeu Snake en Java et Java Swing réalisé au semestre 2 par groupe de 6. Nous avons apporté de nouvelles fonctionnalités comme l'ajout de différents modes (chrono, labyrinthe, classique, duo), d'un choix du niveau de difficulté (facile, moyen, difficile) et d'un système de bonus et malus. 
+J'ai contribué à un projet de développement du jeu Snake en Java et Java Swing réalisé au semestre 2 par groupe de 6. Nous avons apporté de nouvelles fonctionnalités comme l'ajout de différents modes (chrono, labyrinthe, classique, duo), d'un choix du niveau de difficulté (facile, moyen, difficile) et d'un système de bonus et malus. Voici le lien de la vidéo de démonstration du jeu : https://youtu.be/axH0ANvn9D8.
 
 # Kamisado 
 J'ai réalisé un projet de développement individuel du jeu Kamisado en Java et Java Swing. Une intelligence artificielle est églalement présente dans le jeu. Voici le lien de la  vidéo de la démonstration : https://youtu.be/B6b0kyvBPdM.
@@ -32,6 +32,7 @@ Un démonstration de l'outil est visible sur Youtube via ces 3 liens :
 ## Liens des Vidéos
 sur Youtube :
 - vidéo démo CO2 : https://youtu.be/F5PmEuGwsrU
+- vidéo démo Snake : https://youtu.be/axH0ANvn9D8
 - vidéo démo Kamisado : https://youtu.be/B6b0kyvBPdM
 - vidéo démo site internet NodeJS : https://youtu.be/Yqn5NhnRzNk
 - vidéo démo site internet vente de produits (partie authentification) : https://youtu.be/ibp1vIj0MNU
