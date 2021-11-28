@@ -3,19 +3,24 @@
 Ce dépôt contient mes projets réalisés durant mes 2 années de DUT de 2019 à 2021.
 
 # CO2
-Un projet de développement par groupe du jeu de société CO2 en java et javafx réalisé au semestre 3 basé sur les méthodes agiles (groupe de 6 dont un product owner).
+J'ai participé à un projet de développement du jeu de société CO2 en Java et Javafx réalisé au semestre 3 basé sur les méthodes agiles (groupe de 6 dont un product owner).
 
 # Snake
-Un projet de développement par groupe du jeu Snake en java et java Swing réalisé au semestre 2. Nous avons apporté de nouvelles fonctionnalités comme l'ajout de différents modes (chrono, labyrinthe, classique, duo) et d'un choix du niveau de difficulté (facile, moyen, difficile).
+J'ai contribué à un projet de développement du jeu Snake en Java et Java Swing réalisé au semestre 2 par groupe de 6. Nous avons apporté de nouvelles fonctionnalités comme l'ajout de différents modes (chrono, labyrinthe, classique, duo), d'un choix du niveau de difficulté (facile, moyen, difficile) et d'un système de bonus et malus.
 
 # Kamisado 
-Un projet de développement individuel du jeu Kamisado en java et java Swing.
+J'ai réalisé un projet de développement individuel du jeu Kamisado en Java et Java Swing. Une intelligence artificielle est églalement présente dans le jeu.
 
 # Sites Internet
-Un site pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client.
+J'ai participé au développement d'un site internet pour la gestion d'une médiathèque en HTML/CSS/JS/PHP avec le Framework Symfony et une base de données MySQL volumineuse, pour un client. Nous étions 4 dans ce projet. J'ai été la cheffe de groupe.
+
+J'ai également réalisé un autre site internet en HTML/CSS/JS/PHP avec le Framework Symfony dont les liens Youtube des démos sont disponibles dans la rubrique "Liens des vidéos".
+
+J'ai aussi développé un site internet en NodeJS dont la démo est présente sur Youtube (voir la rubrique "Liens des Vidéos").
 
 # Développement outil de prototypage IHM
-Un projet de développement dans le cadre de mon stage de fin de DUT (10 semaines). Il s'agit d'un développement open source d'un outil de prototypage IHM en Pharo pour des composants.
+J'ai réalisé un projet dans le cadre de mon stage de fin de DUT (10 semaines). Il s'agit d'un développement open source d'un outil de prototypage IHM en Pharo pour des composants. Pour ce projet, j'ai utilisé les méthodes d'UX design et Design Thinking.
+
 Lien du GitHub : https://github.com/OpenSmock/Molecule (ma partie : UI Tools overview).
 
 ## Liens des Vidéos
